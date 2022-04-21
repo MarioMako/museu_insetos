@@ -19,8 +19,8 @@ public class DataConfiguration {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setUrl("jdbc:mysql://localhost:3306/tabela_insetos");
-        dataSource.setUsername("lnovik");
-        dataSource.setPassword("luannovik");
+        dataSource.setUsername("mariomako");
+        dataSource.setPassword("root");
         return dataSource;
     }
     @Bean
