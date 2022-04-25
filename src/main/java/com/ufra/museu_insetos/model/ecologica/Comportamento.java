@@ -1,10 +1,13 @@
 package com.ufra.museu_insetos.model.ecologica;
 
 import br.com.wpe.api.persistence.bean.AbstractEntity;
+import com.ufra.museu_insetos.model.Especie;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
+
 @Entity
 @Table(
         name = "COMPORTAMENTO"
@@ -27,6 +30,9 @@ public class Comportamento extends AbstractEntity {
             name = "TIPO"
     )
     private String tipo;
+
+    @OneToMany(mappedBy="comportamento", fetch = FetchType.LAZY)
+    private List<Especie> especies;
 
     public Comportamento() {
     }

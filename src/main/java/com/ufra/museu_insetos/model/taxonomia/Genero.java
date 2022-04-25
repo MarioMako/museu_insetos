@@ -1,10 +1,13 @@
 package com.ufra.museu_insetos.model.taxonomia;
 
 import br.com.wpe.api.persistence.bean.AbstractEntity;
+import com.ufra.museu_insetos.model.Especie;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
+
 @Entity
 @Table(
         name = "GENERO"
@@ -19,7 +22,7 @@ public class Genero extends AbstractEntity {
             strategy = GenerationType.IDENTITY
     )
     @Column(
-            name = "ID_ORDEM"
+            name = "ID_GENERO"
     )
     private int id;
 
@@ -27,6 +30,13 @@ public class Genero extends AbstractEntity {
             name = "NOME"
     )
     private String nome;
+
+    @ManyToOne
+    @JoinColumn(name="ID_FAMILIA",nullable = false)
+    private Familia familia_id;
+
+    @OneToMany(mappedBy="genero", fetch = FetchType.LAZY)
+    private List<Especie> especies;
 
     public Genero() {
     }

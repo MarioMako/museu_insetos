@@ -1,6 +1,7 @@
 package com.ufra.museu_insetos.model.morfologia;
 
 import br.com.wpe.api.persistence.bean.AbstractEntity;
+import com.ufra.museu_insetos.model.taxonomia.Familia;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -27,6 +28,10 @@ public class Antena extends AbstractEntity {
             name = "TIPO"
     )
     private String tipo;
+
+    @ManyToOne
+    @JoinColumn(name="ID_DESCRICAO_MORFOLOGICA",nullable = false)
+    private DescricaoMorfologica descricaoMorfologica_id;
 
     public Antena() {
     }

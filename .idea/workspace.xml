@@ -4,11 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a66aeee-457e-491e-b9af-b67c931ad7db" name="Default Changelist" comment="">
+    <list default="true" id="5a66aeee-457e-491e-b9af-b67c931ad7db" name="Default Changelist" comment="commit de entidades (ainda falta melhorar as relações)">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/ecologica/Comportamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/ecologica/Comportamento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/morfologia/Abdomen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/morfologia/Abdomen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/morfologia/Antena.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/morfologia/Antena.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/morfologia/AparelhoBucal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/morfologia/AparelhoBucal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/morfologia/Asas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/morfologia/Asas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/morfologia/DescricaoMorfologica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/morfologia/DescricaoMorfologica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/morfologia/Pernas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/morfologia/Pernas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/taxonomia/ClassificacaoTaxonomica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/taxonomia/ClassificacaoTaxonomica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/taxonomia/Familia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/taxonomia/Familia.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/taxonomia/Genero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/taxonomia/Genero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/taxonomia/Ordem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/taxonomia/Ordem.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +33,12 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PUSH_AUTO_UPDATE" value="true" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="JpbToolWindowState">
@@ -57,6 +73,10 @@
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
@@ -64,6 +84,17 @@
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MuseuInsetosApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="museu_insetos" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.ufra.museu_insetos.MuseuInsetosApplication" />
@@ -87,10 +118,30 @@
       <workItem from="1649721904269" duration="884000" />
       <workItem from="1650326440796" duration="658000" />
       <workItem from="1650327133668" duration="444000" />
+      <workItem from="1650570755822" duration="758000" />
+      <workItem from="1650665847891" duration="2306000" />
+      <workItem from="1650901775728" duration="1490000" />
+      <workItem from="1650917753186" duration="6346000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="commit de entidades (ainda falta melhorar as relações)" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit de entidades (ainda falta melhorar as relações)" />
   </component>
 </project>

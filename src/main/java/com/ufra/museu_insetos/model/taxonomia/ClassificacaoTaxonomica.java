@@ -1,10 +1,13 @@
 package com.ufra.museu_insetos.model.taxonomia;
 
 import br.com.wpe.api.persistence.bean.AbstractEntity;
+import com.ufra.museu_insetos.model.Especie;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
+
 @Entity
 @Table(
         name = "CLASSIFICACAO_TAXONOMICA"
@@ -27,6 +30,12 @@ public class ClassificacaoTaxonomica extends AbstractEntity {
             name = "TIPO"
     )
     private String tipo;
+
+    @OneToMany(mappedBy="classificacao_taxonomica", fetch = FetchType.LAZY)
+    private List<Ordem> ordens;
+
+    @OneToMany(mappedBy="classificacao_taxonomica", fetch = FetchType.LAZY)
+    private List<Especie> especies;
 
     public ClassificacaoTaxonomica() {
     }

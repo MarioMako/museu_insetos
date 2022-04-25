@@ -28,6 +28,10 @@ public class Abdomen extends AbstractEntity {
     )
     private String tipo;
 
+    @ManyToOne
+    @JoinColumn(name="ID_DESCRICAO_MORFOLOGICA",nullable = false)
+    private DescricaoMorfologica descricaoMorfologica_id;
+
     public Abdomen() {
     }
 
