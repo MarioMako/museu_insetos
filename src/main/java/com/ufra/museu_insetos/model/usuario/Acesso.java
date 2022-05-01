@@ -2,10 +2,13 @@ package com.ufra.museu_insetos.model.usuario;
 
 import javax.persistence.*;
 import br.com.wpe.api.persistence.bean.AbstractEntity;
+import com.ufra.museu_insetos.model.taxonomia.Genero;
+import com.ufra.museu_insetos.model.taxonomia.Ordem;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
     @Table(
@@ -38,6 +41,10 @@ public class Acesso extends AbstractEntity {
             name = "IP"
     )
     private String ip;
+
+    @ManyToOne
+    @JoinColumn(name="ID_USUARIO",nullable = false)
+    private Usuario usuario_id;
 
     public Acesso() {
     }

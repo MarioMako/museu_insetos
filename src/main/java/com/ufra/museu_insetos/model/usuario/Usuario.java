@@ -1,11 +1,14 @@
 package com.ufra.museu_insetos.model.usuario;
 
 import br.com.wpe.api.persistence.bean.AbstractEntity;
+import com.ufra.museu_insetos.model.taxonomia.Genero;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.*;
+import java.util.List;
+
 @Entity
 @Table(
         name = "USUARIO"
@@ -40,7 +43,8 @@ public class Usuario extends AbstractEntity {
     )
     private String login;
 
-    
+    @OneToMany(mappedBy="usuario", fetch = FetchType.LAZY)
+    private List<Acesso> acessos;
 
     public Usuario() {
     }
