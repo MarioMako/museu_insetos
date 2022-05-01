@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a66aeee-457e-491e-b9af-b67c931ad7db" name="Default Changelist" comment="commit de entidades agora com algumas relações">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/Especie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/Especie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/biologica/Metamorfose.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/biologica/Metamorfose.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/ecologica/Habitat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/ecologica/Habitat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/usuario/Acesso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/usuario/Acesso.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/usuario/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/usuario/Usuario.java" afterDir="false" />
-    </list>
+    <list default="true" id="5a66aeee-457e-491e-b9af-b67c931ad7db" name="Default Changelist" comment="commit de entidades agora com algumas relações" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,7 +21,7 @@
     <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="dev" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -136,6 +129,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="commit de entidades (ainda falta melhorar as relações)" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit de entidades (ainda falta melhorar as relações)" />
+    <MESSAGE value="commit de entidades agora com todas as relações" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit de entidades agora com todas as relações" />
   </component>
 </project>
