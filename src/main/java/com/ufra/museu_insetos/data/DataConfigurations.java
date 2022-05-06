@@ -16,6 +16,7 @@ public class DataConfigurations {
     @Configuration
     @Profile("dev")
     public class DataConfiguration {
+
         @Bean
         public DataSource dataSource(){
             DriverManagerDataSource dataSource = new DriverManagerDataSource();

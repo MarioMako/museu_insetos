@@ -1,45 +1,30 @@
 package com.ufra.museu_insetos.model.morfologia;
 
-import br.com.wpe.api.persistence.bean.AbstractEntity;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
-@Entity
-@Table(
-        name = "APARELHO_BUCAL"
-)
+import java.io.Serializable;
 
+@Entity
+@Table(name = "APARELHO_BUCAL")
 @Getter
 @Setter
-public class AparelhoBucal extends AbstractEntity {
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+public class AparelhoBucal implements Serializable {
 
     @Id
-    @GeneratedValue(
-            strategy = GenerationType.IDENTITY
-    )
-    @Column(
-            name = "ID_APARELHO_BUCAL"
-    )
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID_APARELHO_BUCAL")
+    private Long id;
 
-    @Column(
-            name = "TIPO"
-    )
-    private String tipo;
+    @Column(name = "TIPO_APARELHOBUCAL", nullable = false)
+    private String tipoAparalhoBucal;
 
     @ManyToOne
-    @JoinColumn(name="ID_DESCRICAO_MORFOLOGICA",nullable = false)
-    private DescricaoMorfologica descricaoMorfologica_id;
+    @JoinColumn(name = "ID_DESCRICAO_MORFOLOGICA", nullable = false)
+    private DescricaoMorfologica descricaoMorfologica;
 
-    public AparelhoBucal() {
-    }
 
-    public Object getId() {
-        return this.id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 }

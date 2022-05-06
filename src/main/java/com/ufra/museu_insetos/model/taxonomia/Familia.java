@@ -1,54 +1,41 @@
 package com.ufra.museu_insetos.model.taxonomia;
 
-import br.com.wpe.api.persistence.bean.AbstractEntity;
 import com.ufra.museu_insetos.model.Especie;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(
-        name = "FAMILIA"
-)
-
+@Table(name = "FAMILIA")
 @Getter
 @Setter
-public class Familia extends AbstractEntity {
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+public class Familia implements Serializable {
+
+
+    private static final long serialVersionUID = -7676134974705220044L;
 
     @Id
-    @GeneratedValue(
-            strategy = GenerationType.IDENTITY
-    )
-    @Column(
-            name = "ID_FAMILIA"
-    )
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID_FAMILIA")
+    private Long id;
 
-    @Column(
-            name = "NOME"
-    )
-    private String nome;
+    @Column(name = "NOME_FAMILIA", nullable = false)
+    private String nomeFamilia;
 
     @ManyToOne
-    @JoinColumn(name="ID_ORDEM",nullable = false)
-    private Ordem ordem_id;
+    @JoinColumn(name = "ID_ORDEM", nullable = false)
+    private Ordem ordem;
 
-    @OneToMany(mappedBy="familia", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "familia", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REMOVE})
     private List<Genero> generos;
 
-    @OneToMany(mappedBy="familia", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "familia", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REMOVE})
     private List<Especie> especies;
 
-    public Familia() {
-    }
 
-    public Object getId() {
-        return this.id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 }

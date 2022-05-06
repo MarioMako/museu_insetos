@@ -1,50 +1,36 @@
 package com.ufra.museu_insetos.model.taxonomia;
 
-import br.com.wpe.api.persistence.bean.AbstractEntity;
 import com.ufra.museu_insetos.model.Especie;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(
-        name = "CLASSIFICACAO_TAXONOMICA"
-)
-
+@Table(name = "CLASSIFICACAO_TAXONOMICA")
 @Getter
 @Setter
-public class ClassificacaoTaxonomica extends AbstractEntity {
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+public class ClassificacaoTaxonomica implements Serializable {
+
+
+    private static final long serialVersionUID = -5778975511963912143L;
 
     @Id
-    @GeneratedValue(
-            strategy = GenerationType.IDENTITY
-    )
-    @Column(
-            name = "ID_CLASSIFICACAO_TAXONOMICA"
-    )
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID_CLASSIFICACAO_TAXONOMICA")
+    private Long id;
 
-    @Column(
-            name = "TIPO"
-    )
-    private String tipo;
+    @Column(name = "TIPO_CLASSIFICACAO_TAXONOMICA", nullable = false)
+    private String tipoClassificacaoTaxonomica;
 
-    @OneToMany(mappedBy="classificacao_taxonomica", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "classificacaoTaxonomica", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REMOVE})
     private List<Ordem> ordens;
 
-    @OneToMany(mappedBy="classificacao_taxonomica", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "classificacaoTaxonomica", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REMOVE})
     private List<Especie> especies;
 
-    public ClassificacaoTaxonomica() {
-    }
-
-    public Object getId() {
-        return this.id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 }

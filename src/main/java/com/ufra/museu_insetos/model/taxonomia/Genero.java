@@ -1,51 +1,37 @@
 package com.ufra.museu_insetos.model.taxonomia;
 
-import br.com.wpe.api.persistence.bean.AbstractEntity;
 import com.ufra.museu_insetos.model.Especie;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(
-        name = "GENERO"
-)
-
+@Table(name = "GENERO")
 @Getter
 @Setter
-public class Genero extends AbstractEntity {
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+public class Genero implements Serializable {
+
+    private static final long serialVersionUID = -1886828522765860080L;
 
     @Id
-    @GeneratedValue(
-            strategy = GenerationType.IDENTITY
-    )
-    @Column(
-            name = "ID_GENERO"
-    )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID_GENERO")
     private int id;
 
-    @Column(
-            name = "NOME"
-    )
-    private String nome;
+    @Column(name = "NOME_GENERO")
+    private String nomeGenero;
 
     @ManyToOne
-    @JoinColumn(name="ID_FAMILIA",nullable = false)
-    private Familia familia_id;
+    @JoinColumn(name = "ID_FAMILIA", nullable = false)
+    private Familia familia;
 
-    @OneToMany(mappedBy="genero", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "genero", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REMOVE})
     private List<Especie> especies;
 
-    public Genero() {
-    }
 
-    public Object getId() {
-        return this.id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 }
