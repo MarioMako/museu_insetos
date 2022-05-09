@@ -23,8 +23,8 @@ public class DataConfigurations {
             dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
 
             dataSource.setUrl("jdbc:mysql://localhost:3306/tabela_insetos");
-            dataSource.setUsername("lnovik");
-            dataSource.setPassword("luannovik");
+            dataSource.setUsername("mario");
+            dataSource.setPassword("mario");
             return dataSource;
         }
         @Bean

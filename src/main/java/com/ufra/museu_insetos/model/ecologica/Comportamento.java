@@ -21,13 +21,12 @@ public class Comportamento implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_COMPORTAMENTO")
-    private int id;
+    private Integer id;
 
     @Column(name = "TIPO_COMPORTAMENTO", nullable = false)
     private String tipoComportamento;
 
     @OneToMany(mappedBy = "comportamento", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REMOVE})
     private List<Especie> especies;
-
 
 }

@@ -19,7 +19,7 @@ public class Asas implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_ASAS")
-    private Long id;
+    private Integer id;
 
     @Column(name = "TIPO_ASAS", nullable = false)
     private String tipoAsas;

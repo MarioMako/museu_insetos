@@ -21,10 +21,10 @@ public class DescricaoMorfologica implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_DESCRICAO_MORFOLOGICA")
-    private Long id;
+    private Integer id;
 
     @Column(name = "TIPO_DESCRICAO_MORFOLOGICA", nullable = false)
-    private String tipoDescricaoMorfologicaa;
+    private String tipoDescricaoMorfologica;
 
     @OneToMany(mappedBy = "descricaoMorfologica", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REMOVE})
     private List<Antena> antenas;

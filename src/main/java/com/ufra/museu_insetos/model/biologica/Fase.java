@@ -17,7 +17,7 @@ public class Fase implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_FASE")
-    private int id;
+    private Integer id;
 
     @Column(name = "DESCRICAO_FASE", nullable = false)
     private String descricaoFase;

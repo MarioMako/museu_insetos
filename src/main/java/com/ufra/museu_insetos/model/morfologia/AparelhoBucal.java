@@ -17,7 +17,7 @@ public class AparelhoBucal implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_APARELHO_BUCAL")
-    private Long id;
+    private Integer id;
 
     @Column(name = "TIPO_APARELHOBUCAL", nullable = false)
     private String tipoAparalhoBucal;

@@ -30,7 +30,7 @@ public class Especie implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_ESPECIE")
-    private Long id;
+    private Integer id;
 
     @Column(name = "NOME_CIENTIFICO", nullable = false, unique = true)
     private String nomeCientifico;

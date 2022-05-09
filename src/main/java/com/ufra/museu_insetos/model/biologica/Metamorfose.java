@@ -21,7 +21,7 @@ public class Metamorfose implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_METAMORFOSE")
-    private int id;
+    private Integer id;
 
     @Column(name = "TIPO_METAMORFOSE", nullable = false)
     private String tipoMetamorfose;

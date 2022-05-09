@@ -22,13 +22,19 @@ public class ClassificacaoTaxonomica implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_CLASSIFICACAO_TAXONOMICA")
-    private Long id;
+    private Integer id;
 
     @Column(name = "TIPO_CLASSIFICACAO_TAXONOMICA", nullable = false)
     private String tipoClassificacaoTaxonomica;
 
     @OneToMany(mappedBy = "classificacaoTaxonomica", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REMOVE})
     private List<Ordem> ordens;
+
+    @OneToMany(mappedBy = "classificacaoTaxonomica", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REMOVE})
+    private List<Familia> familias;
+
+    @OneToMany(mappedBy = "classificacaoTaxonomica", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REMOVE})
+    private List<Genero> generos;
 
     @OneToMany(mappedBy = "classificacaoTaxonomica", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REMOVE})
     private List<Especie> especies;

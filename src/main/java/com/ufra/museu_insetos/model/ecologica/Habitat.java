@@ -21,7 +21,7 @@ public class Habitat implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_HABITAT")
-    private int id;
+    private Integer id;
 
     @Column(name = "TIPO_HABITAT")
     private String tipoHabitat;

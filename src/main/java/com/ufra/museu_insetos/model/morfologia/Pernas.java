@@ -20,7 +20,7 @@ public class Pernas implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_PERNAS")
-    private Long id;
+    private Integer id;
 
     @Column(name = "TIPO_PERNAS", nullable = false)
     private String tipoPernas;

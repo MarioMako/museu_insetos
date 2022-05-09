@@ -19,7 +19,7 @@ public class Antena implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_ANTENA")
-    private Long id;
+    private Integer id;
 
     @Column(name = "TIPO_ANTENA", nullable = false)
     private String tipoAntena;

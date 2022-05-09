@@ -22,7 +22,7 @@ public class Familia implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_FAMILIA")
-    private Long id;
+    private Integer id;
 
     @Column(name = "NOME_FAMILIA", nullable = false)
     private String nomeFamilia;
