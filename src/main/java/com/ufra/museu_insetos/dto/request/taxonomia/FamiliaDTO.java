@@ -1,8 +1,6 @@
 package com.ufra.museu_insetos.dto.request.taxonomia;
 
 import com.ufra.museu_insetos.dto.request.EspecieDTO;
-import com.ufra.museu_insetos.model.taxonomia.Genero;
-import com.ufra.museu_insetos.model.taxonomia.Ordem;
 import lombok.*;
 
 import javax.validation.Valid;
@@ -26,10 +24,6 @@ public class FamiliaDTO {
     @Valid
     @NotNull
     private OrdemDTO ordem;
-
-    @Valid
-    @NotNull
-    private List<GeneroDTO> generos;
 
     @Valid
     @NotNull

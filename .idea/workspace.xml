@@ -4,13 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a66aeee-457e-491e-b9af-b67c931ad7db" name="Default Changelist" comment="querys e alteração do tipo de variavel do id das entidades">
+    <list default="true" id="5a66aeee-457e-491e-b9af-b67c931ad7db" name="Default Changelist" comment="alteração nas entidades">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/enums/GeneroEnum.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/dto/request/EspecieDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/dto/request/EspecieDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/dto/request/taxonomia/ClassificacaoTaxonomicaDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/dto/request/taxonomia/ClassificacaoTaxonomicaDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/dto/request/taxonomia/FamiliaDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/dto/request/taxonomia/FamiliaDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/dto/request/taxonomia/GeneroDTO.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/Especie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/Especie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/taxonomia/ClassificacaoTaxonomica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/taxonomia/ClassificacaoTaxonomica.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/taxonomia/Familia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/taxonomia/Familia.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/taxonomia/Genero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/taxonomia/Genero.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/taxonomia/Ordem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/taxonomia/Ordem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/query/EspecieQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/query/EspecieQuery.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/taxonomia/Genero.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/query/taxonomia/ClassificacaoTaxonomicaQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/query/taxonomia/ClassificacaoTaxonomicaQuery.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/query/taxonomia/GeneroQuery.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +26,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -82,6 +89,17 @@
     </key>
   </component>
   <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MuseuInsetosApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="museu_insetos" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.ufra.museu_insetos.MuseuInsetosApplication" />
@@ -117,7 +135,7 @@
       <workItem from="1651968739255" duration="4000" />
       <workItem from="1651968766275" duration="6839000" />
       <workItem from="1652039574225" duration="14518000" />
-      <workItem from="1652111654886" duration="1599000" />
+      <workItem from="1652111654886" duration="4090000" />
     </task>
     <task id="LOCAL-00001" summary="querys e alteração do tipo de variavel do id das entidades">
       <created>1652057397438</created>
@@ -126,7 +144,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652057397438</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="alteração nas entidades">
+      <created>1652113440844</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1652113440844</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -148,6 +173,7 @@
     <MESSAGE value="commit de entidades (ainda falta melhorar as relações)" />
     <MESSAGE value="commit de entidades agora com todas as relações" />
     <MESSAGE value="querys e alteração do tipo de variavel do id das entidades" />
-    <option name="LAST_COMMIT_MESSAGE" value="querys e alteração do tipo de variavel do id das entidades" />
+    <MESSAGE value="alteração nas entidades" />
+    <option name="LAST_COMMIT_MESSAGE" value="alteração nas entidades" />
   </component>
 </project>

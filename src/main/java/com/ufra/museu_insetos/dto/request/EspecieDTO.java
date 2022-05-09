@@ -1,11 +1,11 @@
 package com.ufra.museu_insetos.dto.request;
 
 import com.ufra.museu_insetos.dto.request.biologica.MetamorforseDTO;
+import com.ufra.museu_insetos.dto.request.ecologica.ComportamentoDTO;
 import com.ufra.museu_insetos.dto.request.ecologica.HabitatDTO;
 import com.ufra.museu_insetos.dto.request.morfologia.DescricaoMorfologicaDTO;
 import com.ufra.museu_insetos.dto.request.taxonomia.ClassificacaoTaxonomicaDTO;
 import com.ufra.museu_insetos.dto.request.taxonomia.FamiliaDTO;
-import com.ufra.museu_insetos.dto.request.taxonomia.GeneroDTO;
 import com.ufra.museu_insetos.dto.request.taxonomia.OrdemDTO;
 import lombok.*;
 
@@ -51,7 +51,7 @@ public class EspecieDTO {
 
     @Valid
     @NotNull
-    private GeneroDTO comportamento;
+    private ComportamentoDTO comportamento;
 
     @Valid
     @NotNull

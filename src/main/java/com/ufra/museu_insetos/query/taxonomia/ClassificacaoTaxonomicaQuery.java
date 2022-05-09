@@ -9,7 +9,6 @@ import java.util.List;
 public interface ClassificacaoTaxonomicaQuery extends JpaRepository<ClassificacaoTaxonomica, Integer> {
 
     @Query("SELECT c FROM ClassificacaoTaxonomica c WHERE :ordem is null or c.ordens.id = :ordem AND " +
-            " :familia is null or c.familias.id = :familia AND " +
-            " :genero is null or c.generos.id = :genero")
-    List<ClassificacaoTaxonomica> getFiltros(@Param("ordem")Integer ordem,@Param("familia")Integer familia,@Param("genero")Integer genero);
+            " :familia is null or c.familias.id = :familia")
+    List<ClassificacaoTaxonomica> getFiltros(@Param("ordem")Integer ordem,@Param("familia")Integer familia);
 }

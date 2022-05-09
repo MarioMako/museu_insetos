@@ -33,7 +33,5 @@ public class Familia implements Serializable {
     @JoinColumn(name = "ID_ORDEM", nullable = false)
     private Ordem ordem;
 
-    @OneToMany(mappedBy = "familia", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REMOVE})
-    private List<Genero> generos;
 
 }

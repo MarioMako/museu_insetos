@@ -6,9 +6,6 @@ import com.ufra.museu_insetos.model.ecologica.Comportamento;
 import com.ufra.museu_insetos.model.ecologica.Habitat;
 import com.ufra.museu_insetos.model.morfologia.DescricaoMorfologica;
 import com.ufra.museu_insetos.model.taxonomia.ClassificacaoTaxonomica;
-import com.ufra.museu_insetos.model.taxonomia.Familia;
-import com.ufra.museu_insetos.model.taxonomia.Genero;
-import com.ufra.museu_insetos.model.taxonomia.Ordem;
 import lombok.*;
 
 import javax.persistence.*;
