@@ -22,12 +22,8 @@ public interface EspecieQuery extends JpaRepository<Especie,Integer> {
     @Query("SELECT e FROM Especie e WHERE e.nomeVulgar LIKE %:nomeVulgar%")
     List<Especie> findAllByNomeVulgarContains(@Param("nomeVulgar")String nomeVulgar);
 
-    @Query ("SELECT e FROM Especie e WHERE e.ordem.id = :ordem ")
-    List<Especie> findAllByOrdemId(@Param("ordem")Integer ordem);
-    @Query ("SELECT e FROM Especie e WHERE e.familia.id = :familia")
-    List<Especie> findAllByFamiliaId(@Param("familia")Integer familia);
-    @Query ("SELECT e FROM  Especie e WHERE e.genero.id = :genero")
-    List<Especie> findAllByGeneroId(@Param("genero")Integer genero);
+    @Query ("SELECT e FROM Especie e WHERE e.classificacaoTaxonomica.id = :classificacaoTaxonomica")
+    List<Especie> findAllByClassificacaoTaxonomicaId(@Param("classificacaoTaxonomica")Integer classificacaoTaxonomica);
     @Query ("SELECT e FROM  Especie e WHERE e.comportamento.id = :comportamento")
     List<Especie> findAllByComportamentoId(@Param("comportamento")Integer comportamento);
     @Query ("SELECT e FROM Especie e WHERE e.metamorfose.id = :metamorfose")

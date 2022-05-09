@@ -52,16 +52,8 @@ public class Especie implements Serializable {
     Set<Habitat> especieHabitat;
 
     @ManyToOne
-    @JoinColumn(name = "ID_FAMILIA", nullable = false)
-    private Familia familia;
-
-    @ManyToOne
-    @JoinColumn(name = "ID_ORDEM", nullable = false)
-    private Ordem ordem;
-
-    @ManyToOne
-    @JoinColumn(name = "ID_GENERO", nullable = false)
-    private Genero genero;
+    @JoinColumn(name = "ID_CLASSIFICACAO_TAXONOMICA", nullable = false)
+    private ClassificacaoTaxonomica classificacaoTaxonomica;
 
     @ManyToOne
     @JoinColumn(name = "ID_COMPORTAMENTO", nullable = false)
@@ -74,10 +66,5 @@ public class Especie implements Serializable {
     @ManyToOne
     @JoinColumn(name = "ID_DESCRICAO_MORFOLOGICA", nullable = false)
     private DescricaoMorfologica descricaoMorfologica;
-
-    @ManyToOne
-    @JoinColumn(name = "ID_CLASSIFICACAO_TAXONOMICA", nullable = false)
-    private ClassificacaoTaxonomica classificacaoTaxonomica;
-
 
 }

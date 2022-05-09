@@ -33,8 +33,4 @@ public class Ordem implements Serializable {
     @OneToMany(mappedBy = "ordem", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REMOVE})
     private List<Familia> familias;
 
-    @OneToMany(mappedBy = "ordem", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REMOVE})
-    private List<Especie> especies;
-
-
 }

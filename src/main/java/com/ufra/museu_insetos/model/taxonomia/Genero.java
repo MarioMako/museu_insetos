@@ -1,11 +1,8 @@
 package com.ufra.museu_insetos.model.taxonomia;
 
-import com.ufra.museu_insetos.model.Especie;
 import lombok.*;
-
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 
 @Entity
 @Table(name = "GENERO")
@@ -27,11 +24,11 @@ public class Genero implements Serializable {
     private String nomeGenero;
 
     @ManyToOne
+    @JoinColumn(name = "ID_CLASSIFICAÇÃO_TAXONOMICA", nullable = false)
+    private ClassificacaoTaxonomica classificacaoTaxonomica;
+
+    @ManyToOne
     @JoinColumn(name = "ID_FAMILIA", nullable = false)
     private Familia familia;
-
-    @OneToMany(mappedBy = "genero", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REMOVE})
-    private List<Especie> especies;
-
 
 }
