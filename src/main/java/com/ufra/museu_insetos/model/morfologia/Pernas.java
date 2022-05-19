@@ -25,7 +25,7 @@ public class Pernas implements Serializable {
     @Column(name = "TIPO_PERNAS", nullable = false)
     private String tipoPernas;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ID_DESCRICAO_MORFOLOGICA", nullable = false)
     private DescricaoMorfologica descricaoMorfologica;
 

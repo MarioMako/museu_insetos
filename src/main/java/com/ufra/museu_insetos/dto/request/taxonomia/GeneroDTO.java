@@ -1,7 +1,5 @@
 package com.ufra.museu_insetos.dto.request.taxonomia;
-
-
-import com.ufra.museu_insetos.model.taxonomia.Ordem;
+import com.ufra.museu_insetos.model.taxonomia.Genero;
 import lombok.*;
 
 import javax.validation.Valid;
@@ -15,22 +13,17 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class OrdemDTO {
+public class GeneroDTO {
 
     @NotBlank
     @Size(min = 2)
-    private String nomeOrdem;
+    private String nomeGenero;
 
     @Valid
     @NotNull
     private ClassificacaoTaxonomicaDTO classificacaoTaxonomica;
 
-    @Valid
-    @NotNull
-    private List<FamiliaDTO> familias;
-
-
-    public OrdemDTO(Ordem ordem) {
-        this.nomeOrdem = ordem.getNomeOrdem();
+    public GeneroDTO(Genero genero) {
+        this.nomeGenero = genero.getNomeGenero();
     }
 }

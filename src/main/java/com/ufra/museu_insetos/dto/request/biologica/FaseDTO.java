@@ -1,5 +1,6 @@
 package com.ufra.museu_insetos.dto.request.biologica;
 
+import com.ufra.museu_insetos.model.biologica.Fase;
 import lombok.*;
 
 import javax.validation.Valid;
@@ -26,4 +27,8 @@ public class FaseDTO {
     @NotNull
     private MetamorforseDTO metamorfose;
 
+    public FaseDTO(Fase fase) {
+        this.descricaoFase = fase.getDescricaoFase();
+        this.tempoFase = fase.getTempoFase();
+    }
 }

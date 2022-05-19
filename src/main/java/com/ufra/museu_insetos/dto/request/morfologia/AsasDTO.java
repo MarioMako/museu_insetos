@@ -1,5 +1,6 @@
 package com.ufra.museu_insetos.dto.request.morfologia;
 
+import com.ufra.museu_insetos.model.morfologia.Asas;
 import lombok.*;
 
 import javax.validation.Valid;
@@ -22,4 +23,8 @@ public class AsasDTO {
     @NotNull
     private DescricaoMorfologicaDTO descricaoMorfologica;
 
+
+    public AsasDTO(Asas asas) {
+        this.tipoAsas = asas.getTipoAsas();
+    }
 }

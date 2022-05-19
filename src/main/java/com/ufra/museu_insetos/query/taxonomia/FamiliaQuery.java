@@ -1,13 +1,16 @@
 package com.ufra.museu_insetos.query.taxonomia;
 
 import com.ufra.museu_insetos.model.taxonomia.Familia;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
 
-public interface FamiliaQuery extends JpaRepository<Familia, Integer> {
+@Repository
+public interface FamiliaQuery extends CrudRepository<Familia, Integer> {
 
     @Query("SELECT f FROM Familia f WHERE f.ordem.id = :ordem")
-    List<Familia> getFamiliaByOrdemId(@Param("ordem")Integer ordem);
+    List<Familia> findFamiliaByOrdem(@Param("ordem")Integer ordem);
 }

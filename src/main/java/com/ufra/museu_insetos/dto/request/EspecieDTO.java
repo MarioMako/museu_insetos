@@ -2,18 +2,18 @@ package com.ufra.museu_insetos.dto.request;
 
 import com.ufra.museu_insetos.dto.request.biologica.MetamorforseDTO;
 import com.ufra.museu_insetos.dto.request.ecologica.ComportamentoDTO;
-import com.ufra.museu_insetos.dto.request.ecologica.HabitatDTO;
 import com.ufra.museu_insetos.dto.request.morfologia.DescricaoMorfologicaDTO;
 import com.ufra.museu_insetos.dto.request.taxonomia.ClassificacaoTaxonomicaDTO;
 import com.ufra.museu_insetos.dto.request.taxonomia.FamiliaDTO;
 import com.ufra.museu_insetos.dto.request.taxonomia.OrdemDTO;
+import com.ufra.museu_insetos.model.Especie;
+import com.ufra.museu_insetos.model.ecologica.HabitatEnum;
 import lombok.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.Set;
 
 @Builder
 @Getter
@@ -39,7 +39,11 @@ public class EspecieDTO {
 
     @Valid
     @NotNull
-    Set<HabitatDTO> especieHabitat;
+    private HabitatEnum habitat;
+
+    @Valid
+    @NotNull
+    private ComportamentoDTO comportamento;
 
     @Valid
     @NotNull
@@ -48,10 +52,6 @@ public class EspecieDTO {
     @Valid
     @NotNull
     private OrdemDTO ordem;
-
-    @Valid
-    @NotNull
-    private ComportamentoDTO comportamento;
 
     @Valid
     @NotNull
@@ -66,4 +66,6 @@ public class EspecieDTO {
     private ClassificacaoTaxonomicaDTO classificacaoTaxonomica;
 
 
+    public EspecieDTO(Especie e) {
+    }
 }

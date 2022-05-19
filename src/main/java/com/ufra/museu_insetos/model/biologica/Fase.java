@@ -25,7 +25,7 @@ public class Fase implements Serializable {
     @Column(name = "TEMPO_FASE", nullable = false)
     private String tempoFase;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ID_METAMORFOSE", nullable = false)
     private Metamorfose metamorfose;
 

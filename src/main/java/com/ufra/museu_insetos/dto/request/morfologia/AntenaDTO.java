@@ -1,5 +1,6 @@
 package com.ufra.museu_insetos.dto.request.morfologia;
 
+import com.ufra.museu_insetos.model.morfologia.Antena;
 import lombok.*;
 
 import javax.validation.Valid;
@@ -21,4 +22,8 @@ public class AntenaDTO {
     @Valid
     @NotNull
     private DescricaoMorfologicaDTO descricaoMorfologica;
+
+    public AntenaDTO(Antena antena) {
+        this.tipoAntena = antena.getTipoAntena();
+    }
 }

@@ -1,5 +1,6 @@
 package com.ufra.museu_insetos.dto.request.morfologia;
 
+import com.ufra.museu_insetos.model.morfologia.AparelhoBucal;
 import com.ufra.museu_insetos.model.morfologia.DescricaoMorfologica;
 import lombok.*;
 
@@ -22,5 +23,9 @@ public class AparelhoBucalDTO {
     @Valid
     @NotNull
     private DescricaoMorfologicaDTO descricaoMorfologica;
+
+    public AparelhoBucalDTO(AparelhoBucal aparelhoBucal) {
+        this.tipoAparalhoBucal = aparelhoBucal.getTipoAparalhoBucal();
+    }
 
 }

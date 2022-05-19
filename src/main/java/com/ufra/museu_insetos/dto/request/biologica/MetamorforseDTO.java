@@ -1,6 +1,7 @@
 package com.ufra.museu_insetos.dto.request.biologica;
 
 import com.ufra.museu_insetos.dto.request.EspecieDTO;
+import com.ufra.museu_insetos.model.biologica.Metamorfose;
 import lombok.*;
 
 import javax.validation.Valid;
@@ -29,4 +30,7 @@ public class MetamorforseDTO {
     private List<EspecieDTO> especies;
 
 
+    public MetamorforseDTO(Metamorfose metamorfose) {
+        this.tipoMetamorfose = metamorfose.getTipoMetamorfose();
+    }
 }

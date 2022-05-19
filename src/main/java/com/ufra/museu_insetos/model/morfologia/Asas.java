@@ -24,7 +24,7 @@ public class Asas implements Serializable {
     @Column(name = "TIPO_ASAS", nullable = false)
     private String tipoAsas;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ID_DESCRICAO_MORFOLOGICA", nullable = false)
     private DescricaoMorfologica descricaoMorfologica;
 

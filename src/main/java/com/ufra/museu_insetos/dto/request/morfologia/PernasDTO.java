@@ -1,6 +1,7 @@
 package com.ufra.museu_insetos.dto.request.morfologia;
 
 
+import com.ufra.museu_insetos.model.morfologia.Pernas;
 import lombok.*;
 
 import javax.validation.Valid;
@@ -25,4 +26,7 @@ public class PernasDTO {
     private DescricaoMorfologicaDTO descricaoMorfologica;
 
 
+    public PernasDTO(Pernas pernas) {
+        this.tipoPernas = pernas.getTipoPernas();
+    }
 }

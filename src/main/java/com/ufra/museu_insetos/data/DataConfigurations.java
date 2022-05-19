@@ -22,9 +22,9 @@ public class DataConfigurations {
             DriverManagerDataSource dataSource = new DriverManagerDataSource();
             dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
 
-            dataSource.setUrl("jdbc:mysql://localhost:3306/tabela_insetos");
-            dataSource.setUsername("mario");
-            dataSource.setPassword("mario");
+            dataSource.setUrl("jdbc:mysql://localhost:3306/museu_insetos");
+            dataSource.setUsername("root");
+            dataSource.setPassword("root");
             return dataSource;
         }
         @Bean

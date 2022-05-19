@@ -3,11 +3,13 @@ package com.ufra.museu_insetos.query.morfologia;
 import com.ufra.museu_insetos.model.morfologia.Antena;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
 
-public interface AntenaQuery extends JpaRepository<Antena, Integer> {
+@Repository
+public interface AntenaQuery extends CrudRepository<Antena, Integer> {
 
-    @Query("SELECT a FROM Antena a WHERE a.descricaoMorfologica.id = :antena")
-    List<Antena> getAntenaByDescricaoMorfologicaId(@Param("antena")Integer antena);
 }

@@ -1,6 +1,7 @@
 package com.ufra.museu_insetos.dto.request.taxonomia;
 
 import com.ufra.museu_insetos.dto.request.EspecieDTO;
+import com.ufra.museu_insetos.model.taxonomia.Familia;
 import lombok.*;
 
 import javax.validation.Valid;
@@ -20,14 +21,15 @@ public class FamiliaDTO {
     @Size(min = 2)
     private String nomeFamilia;
 
-
     @Valid
     @NotNull
     private OrdemDTO ordem;
 
     @Valid
     @NotNull
-    private List<EspecieDTO> especies;
+    private List<GeneroDTO> generos;
 
-
+    public FamiliaDTO(Familia familia) {
+        this.nomeFamilia = familia.getNomeFamilia();
+    }
 }

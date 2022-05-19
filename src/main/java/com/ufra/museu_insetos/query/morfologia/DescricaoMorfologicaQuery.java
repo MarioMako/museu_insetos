@@ -6,13 +6,11 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import java.util.List;
 
-public interface DescricaoMorfologicaQuery extends JpaRepository<DescricaoMorfologica, Integer> {
+public interface DescricaoMorfologicaQuery extends JpaRepository<DescricaoMorfologica, Integer>{
 
-    @Query("SELECT d FROM DescricaoMorfologica d WHERE :abdomen IS NULL OR d.abdomens.id = :abdomen AND " +
-            " :antena IS NULL OR d.antenas.id = :antena AND " +
-            " :aparelhoBucal IS NULL OR d.aparelhoBucais.id = :aparelhoBucal AND " +
-            " :asas IS NULL OR d.asasList.id = :asas AND " +
-            " :pernas IS NULL OR d.pernasList.id = :pernas")
-    List<DescricaoMorfologica> getFiltros(@Param("abdomen")Integer abdomen,@Param("antena")Integer antenas,@Param("aparelhoBucal")Integer aparelhoBucal,
-                                          @Param("asas")Integer asas,@Param("pernas")Integer pernas);
+    @Query("SELECT d FROM DescricaoMorfologica d JOIN d.abdomens ab JOIN d.antenas an JOIN d.aparelhoBucais ap JOIN d.asasList asa JOIN d.pernasList p WHERE " +
+            " (ab.id = :abdomens OR :abdomens IS NULL) OR (an.id = :antenas OR :antenas IS NULL) OR (ap.id = :aparelhoBucais OR :aparelhoBucais IS NULL) " +
+            "OR (asa.id = :asas OR :asas IS NULL) OR  (p.id = :pernas OR :pernas IS NULL)")
+    List<DescricaoMorfologica> getFiltros(@Param("abdomens")Integer abdomens, @Param("antenas")Integer antenas, @Param("aparelhoBucais")Integer aparelhoBucais,
+                                          @Param("asas")Integer asas, @Param("pernas")Integer pernas);
 }

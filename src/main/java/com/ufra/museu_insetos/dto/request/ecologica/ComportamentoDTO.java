@@ -1,7 +1,7 @@
 package com.ufra.museu_insetos.dto.request.ecologica;
 
 import com.ufra.museu_insetos.dto.request.EspecieDTO;
-import com.ufra.museu_insetos.model.Especie;
+import com.ufra.museu_insetos.model.ecologica.Comportamento;
 import lombok.*;
 
 import javax.validation.Valid;
@@ -25,5 +25,7 @@ public class ComportamentoDTO {
     @NotNull
     private List<EspecieDTO> especies;
 
-
+    public ComportamentoDTO(Comportamento comportamento) {
+        this.tipoComportamento = comportamento.getTipoComportamento();
+    }
 }

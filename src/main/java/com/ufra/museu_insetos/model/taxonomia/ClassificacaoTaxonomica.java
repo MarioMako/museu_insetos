@@ -6,6 +6,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "CLASSIFICACAO_TAXONOMICA")
@@ -27,9 +28,6 @@ public class ClassificacaoTaxonomica implements Serializable {
     @Column(name = "TIPO_CLASSIFICACAO_TAXONOMICA", nullable = false)
     private String tipoClassificacaoTaxonomica;
 
-    @Column(name = "GENERO", nullable = false)
-    private Integer genero;
-
     @OneToMany(mappedBy = "classificacaoTaxonomica", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REMOVE})
     private List<Ordem> ordens;
 
@@ -37,6 +35,23 @@ public class ClassificacaoTaxonomica implements Serializable {
     private List<Familia> familias;
 
     @OneToMany(mappedBy = "classificacaoTaxonomica", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REMOVE})
+    private List<Genero> generos;
+
+    @OneToMany(mappedBy = "classificacaoTaxonomica", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REMOVE})
     private List<Especie> especies;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ClassificacaoTaxonomica that = (ClassificacaoTaxonomica) o;
+        return id.equals(that.id) && tipoClassificacaoTaxonomica.equals(that.tipoClassificacaoTaxonomica) && ordens.equals(that.ordens) && familias.equals(that.familias) && generos.equals(that.generos) && especies.equals(that.especies);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, tipoClassificacaoTaxonomica, ordens, familias, generos, especies);
+    }
+
 
 }

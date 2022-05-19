@@ -24,11 +24,15 @@ public class ClassificacaoTaxonomicaDTO {
 
     @Valid
     @NotNull
-    private Integer genero;
+    private List<OrdemDTO> ordens;
 
     @Valid
     @NotNull
-    private List<OrdemDTO> ordens;
+    private List<GeneroDTO> generos;
+
+    @Valid
+    @NotNull
+    private List<FamiliaDTO> familias;
 
     @Valid
     @NotNull
