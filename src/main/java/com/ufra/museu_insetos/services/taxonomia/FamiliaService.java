@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.ws.rs.NotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service
 public class FamiliaService {
@@ -34,6 +36,12 @@ public class FamiliaService {
         familia.setId(id);
         var res = familiaQuery.save(familia);
         return new FamiliaDTO(res);
+    }
+
+    public List<FamiliaDTO> getAllFamilias(){
+        List<FamiliaDTO> familias = new ArrayList<FamiliaDTO>();
+        familias = StreamSupport.stream(familiaQuery.findAll().spliterator(),false).map(FamiliaDTO::new).collect(Collectors.toList());
+        return familias;
     }
 
     public List<FamiliaDTO> getFamiliasByOrdem(@RequestParam(required = false) Integer nome) {

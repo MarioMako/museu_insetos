@@ -7,6 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.ws.rs.NotFoundException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service
 public class MetamorfoseService {
@@ -24,6 +28,12 @@ public class MetamorfoseService {
     public void excluirMetamorfose(Integer id){
         Metamorfose metamorfose = metamorfoseQuery.findById(id).orElseThrow(() -> new NotFoundException("Metamorfose não encontrada".replace("id",id.toString())));
         metamorfoseQuery.delete(metamorfose);
+    }
+
+    public List<MetamorforseDTO> getAllMetamorfoses(){
+        List<MetamorforseDTO> metamorfoses = new ArrayList<MetamorforseDTO>();
+        metamorfoses = StreamSupport.stream(metamorfoseQuery.findAll().spliterator(),false).map(MetamorforseDTO::new).collect(Collectors.toList());
+        return metamorfoses;
     }
 
     public Metamorfose atualizarMetamorfose(Metamorfose metamorfose, Integer id){

@@ -12,5 +12,6 @@ public interface ClassificacaoTaxonomicaQuery extends CrudRepository<Classificac
 
     @Query("SELECT c FROM ClassificacaoTaxonomica c JOIN c.ordens o JOIN c.familias f JOIN c.generos g WHERE (o.id = :ordens OR :ordens IS NULL) OR" +
             " (f.id = :familias OR :familias IS NULL) OR (g.id = :generos OR :generos IS NULL) ")
-    List<ClassificacaoTaxonomica> getFiltros(@Param("ordens")Integer ordens,@Param("familias")Integer familia,@Param("generos")Integer genero);
+    List<ClassificacaoTaxonomica> findFiltros(@Param("ordens")Integer ordens,@Param("familias")Integer familia,@Param("generos")Integer genero);
+
 }

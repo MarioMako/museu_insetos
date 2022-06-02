@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.ws.rs.NotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service
 public class FaseService {
@@ -33,6 +35,12 @@ public class FaseService {
         obterFasePorId(id);
         fase.setId(id);
         return faseQuery.save(fase);
+    }
+
+    public List<FaseDTO> getAllFases(){
+        List<FaseDTO> fases = new ArrayList<FaseDTO>();
+        fases = StreamSupport.stream(faseQuery.findAll().spliterator(),false).map(FaseDTO::new).collect(Collectors.toList());
+        return fases;
     }
 
     public List<FaseDTO> getFaseByMetamorfose(@RequestParam(required = false) Integer nome){

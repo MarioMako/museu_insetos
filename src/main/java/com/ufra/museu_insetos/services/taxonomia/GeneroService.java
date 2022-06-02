@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.ws.rs.NotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service
 public class GeneroService {
@@ -34,6 +36,12 @@ public class GeneroService {
         genero.setId(id);
         var res= generoQuery.save(genero);
         return new GeneroDTO(res);
+    }
+
+    public List<GeneroDTO> getAllGeneros(){
+        List<GeneroDTO> generos = new ArrayList<GeneroDTO>();
+        generos = StreamSupport.stream(generoQuery.findAll().spliterator(),false).map(GeneroDTO::new).collect(Collectors.toList());
+        return generos;
     }
 
     public List<GeneroDTO> getGeneroByFamilia(@RequestParam(required = false) Integer nome){

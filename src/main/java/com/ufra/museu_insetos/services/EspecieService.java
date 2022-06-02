@@ -9,10 +9,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.ws.rs.NotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
-@RestController
 @Service
 public class EspecieService {
 
@@ -21,6 +21,23 @@ public class EspecieService {
 
     public Especie salvarEspecie(Especie especie) {
         return especieQuery.save(especie);
+    }
+
+    public EspecieDTO obterEspeciePorId(Integer id){
+        var res = especieQuery.findById(id).orElseThrow(() -> new NotFoundException("Espécie não encontrada.".replace("id",id.toString())));
+        return new EspecieDTO(res);
+    }
+
+    public void excluirEspecie(Integer id){
+        var res = especieQuery.findById(id).orElseThrow(() -> new NotFoundException("Espécie não encontrada.".replace("id",id.toString())));
+        especieQuery.delete(res);
+    }
+
+    public EspecieDTO atualizarEspecie(Especie especie, Integer id){
+        obterEspeciePorId(id);
+        especie.setId(id);
+        var res = especieQuery.save(especie);
+        return new EspecieDTO(res);
     }
 
     public List<EspecieDTO> getAllEspecies(@RequestParam(required = false) Integer nome) {

@@ -7,6 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.ws.rs.NotFoundException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service
 public class PernasService {
@@ -24,6 +28,12 @@ public class PernasService {
     public void excluirPernas(Integer id){
         Pernas pernas = pernasQuery.findById(id).orElseThrow(() -> new NotFoundException("Pernas não encontradas.".replace("id",id.toString())));
         pernasQuery.delete(pernas);
+    }
+
+    public List<PernasDTO> getAllPernas(){
+        List<PernasDTO> pernas = new ArrayList<PernasDTO>();
+        pernas = StreamSupport.stream(pernasQuery.findAll().spliterator(),false).map(PernasDTO::new).collect(Collectors.toList());
+        return pernas;
     }
 
     public PernasDTO atualizarPernas(Pernas pernas, Integer id){

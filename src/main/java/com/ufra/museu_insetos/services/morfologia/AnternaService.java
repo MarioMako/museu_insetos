@@ -7,6 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.ws.rs.NotFoundException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service
 public class AnternaService {
@@ -17,13 +21,19 @@ public class AnternaService {
     public Antena salvarAntena(Antena antena){return antenaQuery.save(antena);}
 
     public AntenaDTO obterAntenaPorId(Integer id){
-        var res = antenaQuery.findById(id).orElseThrow(() -> new NotFoundException("Antena não encontrado.".replace("id",id.toString())));
+        var res = antenaQuery.findById(id).orElseThrow(() -> new NotFoundException("Antena não encontrada.".replace("id",id.toString())));
         return new AntenaDTO(res);
     }
 
     public void excluirAntena(Integer id){
-        Antena antena = antenaQuery.findById(id).orElseThrow(() -> new NotFoundException("Antena não encontrado.".replace("id",id.toString())));
+        Antena antena = antenaQuery.findById(id).orElseThrow(() -> new NotFoundException("Antena não encontrada.".replace("id",id.toString())));
         antenaQuery.delete(antena);
+    }
+
+    public List<AntenaDTO> getAllAntenas(){
+        List<AntenaDTO> antenas = new ArrayList<AntenaDTO>();
+        antenas = StreamSupport.stream(antenaQuery.findAll().spliterator(),false).map(AntenaDTO::new).collect(Collectors.toList());
+        return antenas;
     }
 
     public AntenaDTO atualizarAntena(Antena antena, Integer id){

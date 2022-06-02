@@ -1,5 +1,6 @@
 package com.ufra.museu_insetos.dto.request;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ufra.museu_insetos.dto.request.biologica.MetamorforseDTO;
 import com.ufra.museu_insetos.dto.request.ecologica.ComportamentoDTO;
 import com.ufra.museu_insetos.dto.request.morfologia.DescricaoMorfologicaDTO;
@@ -14,12 +15,11 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 @Builder
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
 public class EspecieDTO {
 
     @NotBlank
@@ -65,7 +65,10 @@ public class EspecieDTO {
     @NotNull
     private ClassificacaoTaxonomicaDTO classificacaoTaxonomica;
 
-
     public EspecieDTO(Especie e) {
+        this.nomeVulgar = e.getNomeVulgar();
+        this.nomeCientifico = e.getNomeCientifico();
+        this.habitat = e.getHabitat();
+        this.urlImagem = e.getUrlImagem();
     }
 }

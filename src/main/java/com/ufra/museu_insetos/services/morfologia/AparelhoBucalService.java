@@ -7,6 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.ws.rs.NotFoundException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service
 public class AparelhoBucalService {
@@ -24,6 +28,12 @@ public class AparelhoBucalService {
     public void excluirAparelhoBucal(Integer id){
         AparelhoBucal aparelhoBucal = aparelhoBucalQuery.findById(id).orElseThrow(() -> new NotFoundException("Aparelho Bucal não encontrado.".replace("id",id.toString())));
         aparelhoBucalQuery.delete(aparelhoBucal);
+    }
+
+    public List<AparelhoBucalDTO> getAllAparelhos(){
+        List<AparelhoBucalDTO> aparelhos = new ArrayList<AparelhoBucalDTO>();
+        aparelhos = StreamSupport.stream(aparelhoBucalQuery.findAll().spliterator(),false).map(AparelhoBucalDTO::new).collect(Collectors.toList());
+        return aparelhos;
     }
 
     public AparelhoBucalDTO atualizarAparelho(AparelhoBucal aparelhoBucal, Integer id){

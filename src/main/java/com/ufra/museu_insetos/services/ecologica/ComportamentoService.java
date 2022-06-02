@@ -7,6 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.ws.rs.NotFoundException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service
 public class ComportamentoService {
@@ -24,6 +28,12 @@ public class ComportamentoService {
     public void excluirComportamento(Integer id){
         Comportamento comportamento = comportamentoQuery.findById(id).orElseThrow(() -> new NotFoundException("Comportamento não encontrado.".replace("id",id.toString())));
         comportamentoQuery.delete(comportamento);
+    }
+
+    public List<ComportamentoDTO> getAllComportamentos(){
+        List<ComportamentoDTO> comportamentos = new ArrayList<ComportamentoDTO>();
+        comportamentos = StreamSupport.stream(comportamentoQuery.findAll().spliterator(),false).map(ComportamentoDTO::new).collect(Collectors.toList());
+        return comportamentos;
     }
 
     public Comportamento atualizarComportamento(Comportamento comportamento, Integer id){
