@@ -1,6 +1,7 @@
 package com.ufra.museu_insetos.dto.request.morfologia;
 
 import com.ufra.museu_insetos.dto.request.EspecieDTO;
+import com.ufra.museu_insetos.model.morfologia.DescricaoMorfologica;
 import lombok.*;
 
 import javax.validation.Valid;
@@ -43,4 +44,7 @@ public class DescricaoMorfologicaDTO {
     @Valid
     @NotNull
     private List<EspecieDTO> especies;
+
+    public DescricaoMorfologicaDTO(DescricaoMorfologica descricaoMorfologica) {
+    }
 }

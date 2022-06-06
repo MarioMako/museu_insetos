@@ -1,6 +1,7 @@
 package com.ufra.museu_insetos.dto.request.taxonomia;
 
 import com.ufra.museu_insetos.dto.request.EspecieDTO;
+import com.ufra.museu_insetos.model.taxonomia.ClassificacaoTaxonomica;
 import com.ufra.museu_insetos.model.taxonomia.Ordem;
 import lombok.*;
 
@@ -38,4 +39,6 @@ public class ClassificacaoTaxonomicaDTO {
     @NotNull
     private List<EspecieDTO> especies;
 
+    public ClassificacaoTaxonomicaDTO(ClassificacaoTaxonomica classificacaoTaxonomica) {
+    }
 }

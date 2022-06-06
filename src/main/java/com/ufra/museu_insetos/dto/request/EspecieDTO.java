@@ -8,7 +8,10 @@ import com.ufra.museu_insetos.dto.request.taxonomia.ClassificacaoTaxonomicaDTO;
 import com.ufra.museu_insetos.dto.request.taxonomia.FamiliaDTO;
 import com.ufra.museu_insetos.dto.request.taxonomia.OrdemDTO;
 import com.ufra.museu_insetos.model.Especie;
+import com.ufra.museu_insetos.model.ecologica.Comportamento;
 import com.ufra.museu_insetos.model.ecologica.HabitatEnum;
+import com.ufra.museu_insetos.model.morfologia.DescricaoMorfologica;
+import com.ufra.museu_insetos.model.taxonomia.ClassificacaoTaxonomica;
 import lombok.*;
 
 import javax.validation.Valid;
@@ -32,10 +35,11 @@ public class EspecieDTO {
 
     @NotBlank
     @Size(min = 2)
-    private String descricaoLivre;
+    private Long descricaoLivre;
 
     @NotBlank
-    private String urlImagem;
+    @Size(min = 2)
+    private Long urlImagem;
 
     @Valid
     @NotNull
@@ -44,14 +48,6 @@ public class EspecieDTO {
     @Valid
     @NotNull
     private ComportamentoDTO comportamento;
-
-    @Valid
-    @NotNull
-    private FamiliaDTO familia;
-
-    @Valid
-    @NotNull
-    private OrdemDTO ordem;
 
     @Valid
     @NotNull
@@ -65,10 +61,15 @@ public class EspecieDTO {
     @NotNull
     private ClassificacaoTaxonomicaDTO classificacaoTaxonomica;
 
-    public EspecieDTO(Especie e) {
-        this.nomeVulgar = e.getNomeVulgar();
+    public EspecieDTO(Especie e){
         this.nomeCientifico = e.getNomeCientifico();
-        this.habitat = e.getHabitat();
+        this.nomeVulgar = e.getNomeVulgar();
+        this.descricaoLivre = e.getDescricaoLivre();
         this.urlImagem = e.getUrlImagem();
+        this.habitat = e.getHabitat();
+        this.comportamento = new ComportamentoDTO(e.getComportamento());
+        this.metamorfose = new MetamorforseDTO(e.getMetamorfose());
+        this.descricaoMorfologica = new DescricaoMorfologicaDTO(e.getDescricaoMorfologica());
+        this.classificacaoTaxonomica = new ClassificacaoTaxonomicaDTO(e.getClassificacaoTaxonomica());
     }
 }
