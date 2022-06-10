@@ -42,4 +42,4 @@ public class AbdomenService {
         var res = abdomenQuery.save(abdomen);
         return new AbdomenDTO(res);
     }
-}
+} 

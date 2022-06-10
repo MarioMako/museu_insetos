@@ -8,10 +8,8 @@ import com.ufra.museu_insetos.dto.request.taxonomia.ClassificacaoTaxonomicaDTO;
 import com.ufra.museu_insetos.dto.request.taxonomia.FamiliaDTO;
 import com.ufra.museu_insetos.dto.request.taxonomia.OrdemDTO;
 import com.ufra.museu_insetos.model.Especie;
-import com.ufra.museu_insetos.model.ecologica.Comportamento;
 import com.ufra.museu_insetos.model.ecologica.HabitatEnum;
-import com.ufra.museu_insetos.model.morfologia.DescricaoMorfologica;
-import com.ufra.museu_insetos.model.taxonomia.ClassificacaoTaxonomica;
+
 import lombok.*;
 
 import javax.validation.Valid;
@@ -20,7 +18,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;
 
-@Builder
 @Getter
 @Setter
 public class EspecieDTO {
@@ -35,11 +32,11 @@ public class EspecieDTO {
 
     @NotBlank
     @Size(min = 2)
-    private Long descricaoLivre;
+    private String descricaoLivre;
 
     @NotBlank
     @Size(min = 2)
-    private Long urlImagem;
+    private String urlImagem;
 
     @Valid
     @NotNull
@@ -60,6 +57,7 @@ public class EspecieDTO {
     @Valid
     @NotNull
     private ClassificacaoTaxonomicaDTO classificacaoTaxonomica;
+
 
     public EspecieDTO(Especie e){
         this.nomeCientifico = e.getNomeCientifico();

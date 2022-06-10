@@ -9,4 +9,5 @@ public class DescricaoMorfologicaService {
 
     @Autowired
     private DescricaoMorfologicaQuery descricaoMorfologicaQuery;
+
 }

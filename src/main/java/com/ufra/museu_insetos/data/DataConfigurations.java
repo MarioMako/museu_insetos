@@ -24,7 +24,7 @@ public class DataConfigurations {
 
             dataSource.setUrl("jdbc:mysql://localhost:3306/museu_insetos");
             dataSource.setUsername("root");
-            dataSource.setPassword("root");
+            dataSource.setPassword("root1234");
             return dataSource;
         }
         @Bean

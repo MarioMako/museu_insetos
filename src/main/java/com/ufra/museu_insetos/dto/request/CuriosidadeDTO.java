@@ -8,7 +8,6 @@ import lombok.Setter;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-@Builder
 @Getter
 @Setter
 public class CuriosidadeDTO {
