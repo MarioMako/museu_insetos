@@ -5,7 +5,10 @@ import com.ufra.museu_insetos.model.biologica.Metamorfose;
 import com.ufra.museu_insetos.model.ecologica.Comportamento;
 import com.ufra.museu_insetos.model.ecologica.HabitatEnum;
 import com.ufra.museu_insetos.model.morfologia.DescricaoMorfologica;
+import com.ufra.museu_insetos.model.morfologia.DescricaoMorfologicaEspecie;
 import com.ufra.museu_insetos.model.taxonomia.ClassificacaoTaxonomica;
+import com.ufra.museu_insetos.model.taxonomia.ClassificacaoTaxonomicaEspecie;
+import com.ufra.museu_insetos.services.morfologia.DescricaoMorfologicaService;
 import lombok.*;
 
 import javax.persistence.*;
@@ -15,8 +18,6 @@ import java.io.Serializable;
 @Table(name = "ESPECIE")
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
 @ToString
 public class Especie implements Serializable {
 
@@ -49,7 +50,7 @@ public class Especie implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ID_CLASSIFICACAO_TAXONOMICA", nullable = false)
-    private ClassificacaoTaxonomica classificacaoTaxonomica;
+    private ClassificacaoTaxonomicaEspecie classificacaoTaxonomica;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ID_METAMORFOSE", nullable = false)
@@ -57,7 +58,7 @@ public class Especie implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ID_DESCRICAO_MORFOLOGICA", nullable = false)
-    private DescricaoMorfologica descricaoMorfologica;
+    private DescricaoMorfologicaEspecie descricaoMorfologica;
 
 
 

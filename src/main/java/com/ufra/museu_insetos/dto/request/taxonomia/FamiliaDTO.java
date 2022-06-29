@@ -1,9 +1,11 @@
 package com.ufra.museu_insetos.dto.request.taxonomia;
 
-import com.ufra.museu_insetos.dto.request.EspecieDTO;
 import com.ufra.museu_insetos.model.taxonomia.Familia;
 import lombok.*;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -13,6 +15,9 @@ import java.util.List;
 @Getter
 @Setter
 public class FamiliaDTO {
+
+    @NotNull
+    private Integer id;
 
     @NotBlank
     @Size(min = 2)

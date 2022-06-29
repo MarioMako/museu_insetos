@@ -27,10 +27,6 @@ public class Ordem implements Serializable {
     @Column(name = "NOME_ORDEM", nullable = false)
     private String nomeOrdem;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ID_CLASSIFICACAO_TAXONOMICA", nullable = false)
-    private ClassificacaoTaxonomica classificacaoTaxonomica;
-
     @OneToMany(mappedBy = "ordem", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REMOVE})
     private List<Familia> familias;
 
@@ -39,12 +35,11 @@ public class Ordem implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Ordem ordem = (Ordem) o;
-        return id.equals(ordem.id) && nomeOrdem.equals(ordem.nomeOrdem) && classificacaoTaxonomica.equals(ordem.classificacaoTaxonomica) && familias.equals(ordem.familias);
+        return Objects.equals(id, ordem.id) && Objects.equals(nomeOrdem, ordem.nomeOrdem) && Objects.equals(familias, ordem.familias);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nomeOrdem, classificacaoTaxonomica, familias);
+        return Objects.hash(id, nomeOrdem, familias);
     }
-
 }

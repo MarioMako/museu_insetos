@@ -6,18 +6,22 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
 public class CuriosidadeDTO {
 
-    @Valid
     @NotNull
+    private Integer id;
+
+    @Valid
+    @NotBlank
     private String titulo;
 
     @Valid
-    @NotNull
+    @NotBlank
     private Long descricao;
 
     public CuriosidadeDTO(Curiosidade curiosidade) {

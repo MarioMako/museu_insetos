@@ -14,6 +14,9 @@ import java.util.List;
 @Setter
 public class ComportamentoDTO {
 
+    @NotNull
+    private Integer id;
+
     @NotBlank
     @Size(min = 2)
     private String tipoComportamento;

@@ -18,7 +18,12 @@ public class MetamorfoseService {
     @Autowired
     private MetamorfoseQuery metamorfoseQuery;
 
-    public Metamorfose salvarMetamorfose(Metamorfose metamorfose){return metamorfoseQuery.save(metamorfose);}
+    public MetamorforseDTO salvarMetamorfose(MetamorforseDTO metamorfosedto){
+        Metamorfose metamorfose = new Metamorfose();
+        metamorfose.setTipoMetamorfose(metamorfosedto.getTipoMetamorfose());
+        var res = metamorfoseQuery.save(metamorfose);
+        return new MetamorforseDTO(res);
+    }
 
     public MetamorforseDTO obterMetamorfosePorId(Integer id){
         var res= metamorfoseQuery.findById(id).orElseThrow(() -> new NotFoundException("Metamorfose não encontrada".replace("id",id.toString())));
@@ -36,9 +41,9 @@ public class MetamorfoseService {
         return metamorfoses;
     }
 
-    public Metamorfose atualizarMetamorfose(Metamorfose metamorfose, Integer id){
-        obterMetamorfosePorId(id);
-        metamorfose.setId(id);
+    public Metamorfose atualizarMetamorfose(MetamorforseDTO metamorfosedto){
+        Metamorfose metamorfose = metamorfoseQuery.findById(metamorfosedto.getId()).orElseThrow();
+        metamorfose.setTipoMetamorfose(metamorfosedto.getTipoMetamorfose());
         return metamorfoseQuery.save(metamorfose);
     }
 }

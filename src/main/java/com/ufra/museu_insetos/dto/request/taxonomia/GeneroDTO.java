@@ -12,9 +12,16 @@ import java.util.List;
 @Setter
 public class GeneroDTO {
 
+    @NotNull
+    private Integer id;
+
     @NotBlank
     @Size(min = 2)
     private String nomeGenero;
+
+    @Valid
+    @NotNull
+    private FamiliaDTO familia;
 
     @Valid
     @NotNull

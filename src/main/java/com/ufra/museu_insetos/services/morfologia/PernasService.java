@@ -2,6 +2,7 @@ package com.ufra.museu_insetos.services.morfologia;
 
 import com.ufra.museu_insetos.dto.request.morfologia.PernasDTO;
 import com.ufra.museu_insetos.model.morfologia.Pernas;
+import com.ufra.museu_insetos.model.morfologia.Pernas;
 import com.ufra.museu_insetos.query.morfologia.PernasQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,12 @@ public class PernasService {
     @Autowired
     private PernasQuery pernasQuery;
 
-    public Pernas salvarPernas(Pernas pernas){return pernasQuery.save(pernas);}
+    public PernasDTO salvarPernas(PernasDTO pernasdto){
+        Pernas pernas = new Pernas();
+        pernas.setTipoPernas(pernasdto.getTipoPernas());
+        var res = pernasQuery.save(pernas);
+        return new PernasDTO(res);
+    }
 
     public PernasDTO obterPernasPorId(Integer id){
         var res= pernasQuery.findById(id).orElseThrow(() -> new NotFoundException("Pernas não encontradas.".replace("id",id.toString())));
@@ -36,10 +42,9 @@ public class PernasService {
         return pernas;
     }
 
-    public PernasDTO atualizarPernas(Pernas pernas, Integer id){
-        obterPernasPorId(id);
-        pernas.setId(id);
-        var res= pernasQuery.save(pernas);
-        return new PernasDTO(res);
+    public Pernas atualizarPernas(PernasDTO pernasdto){
+        Pernas pernas = pernasQuery.findById(pernasdto.getId()).orElseThrow();
+        pernas.setTipoPernas(pernasdto.getTipoPernas());
+        return pernasQuery.save(pernas);
     }
 }

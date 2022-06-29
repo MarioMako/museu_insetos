@@ -11,19 +11,18 @@ import java.util.List;
 @Repository
 public interface EspecieQuery extends CrudRepository<Especie,Integer> {
 
-    @Query("SELECT e FROM Especie e WHERE e.nomeCientifico LIKE %:nome% " +
-            " OR e.nomeVulgar LIKE %:nome% OR :nome IS NULL")
-    List<Especie> findAllByNomes(@Param("nome")Integer nome);
-
-    @Query("SELECT e FROM Especie e WHERE e.habitat = :habitat")
-    List<Especie> findAllByHabitat(@Param("habitat")Enum<HabitatEnum> habitat);
-
-    @Query("SELECT e FROM Especie e WHERE e.comportamento.id = :comportamento")
-    List<Especie> findAllByComportamento(@Param("comportamento")Integer comportamento);
-    @Query ("SELECT e FROM Especie e WHERE e.classificacaoTaxonomica.id = :classificacaoTaxonomica")
-    List<Especie> findAllByClassificacaoTaxonomicaId(@Param("classificacaoTaxonomica")Integer classificacaoTaxonomica);
-    @Query ("SELECT e FROM Especie e WHERE e.metamorfose.id = :metamorfose")
-    List<Especie> findAllByMetamorfoseId(@Param("metamorfose")Integer metamorfose);
-    @Query ("SELECT e FROM Especie e WHERE e.descricaoMorfologica.id = :descricaoMorfologica")
-    List<Especie> findAllByDescricaoMorfologicaId(@Param("descricaoMorfologica")Integer descricaoMorfologica);
+    @Query("SELECT e from Especie e " + "JOIN e.nomeVulgar nv JOIN e.nomeCientifico nc " +
+            "JOIN e.classificacaoTaxonomica.ordem.id o JOIN e.classificacaoTaxonomica.familia.id f JOIN e.classificacaoTaxonomica.genero.id g" +
+            " JOIN e.descricaoMorfologica.abdomen.id ab JOIN e.descricaoMorfologica.antena.id ant JOIN e.descricaoMorfologica.aparelho.id ap JOIN e.descricaoMorfologica.asas.id asa" +
+            " JOIN e.descricaoMorfologica.pernas.id p JOIN e.comportamento.id comp JOIN e.metamorfose.id meta JOIN e.habitat h WHERE " +
+            "(nv LIKE %:nome% OR :nv IS NULL) OR (nc LIKE %:nome% OR nc IS NULL) OR" +
+            "(o = :ordem OR :ordem IS NULL) OR (f = :familia OR :familia IS NULL) OR (g = :genero OR :genero IS NULL) OR " +
+            "(ab = :abdomen OR :abdomen IS NULL) OR (ant = :antena OR :antena IS NULL) OR (ap = :aparelho OR :aparelho IS NULL) OR " +
+            "(asa = :asas OR :asas IS NULL) OR (p = :pernas OR :pernas IS NULL) OR (comp = :comportamento OR :comportamento IS NULL) OR " +
+            "(meta = :metamorfose OR :metamorfose IS NULL) OR (h = :habitat OR :habitat IS NULL)")
+    List<Especie> findAllByFiltros(@Param("nome") String nome,
+                             @Param("ordem") Integer ordem, @Param("familia") Integer familia, @Param("genero") Integer genero,
+                             @Param("abdomen") Integer abdomen, @Param("antena") Integer antena, @Param("aparelho") Integer aparelho,
+                             @Param("asas") Integer asas, @Param("pernas") Integer pernas, @Param("comportamento") Integer comportamento,
+                                   @Param("metamorfose") Integer metamorfose, @Param("habitat") HabitatEnum habitat);
 }

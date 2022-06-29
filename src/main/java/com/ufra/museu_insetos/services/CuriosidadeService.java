@@ -1,6 +1,7 @@
 package com.ufra.museu_insetos.services;
 
 import com.ufra.museu_insetos.dto.request.CuriosidadeDTO;
+import com.ufra.museu_insetos.dto.request.EspecieDTO;
 import com.ufra.museu_insetos.model.Curiosidade;
 import com.ufra.museu_insetos.query.CuriosidadeQuery;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,13 @@ public class CuriosidadeService {
     @Autowired
     private CuriosidadeQuery curiosidadeQuery;
 
-    public Curiosidade salvarCuriosidade(Curiosidade curiosidade){return curiosidadeQuery.save(curiosidade);}
+    public CuriosidadeDTO salvarCuriosidade(CuriosidadeDTO curiosidadedto){
+        Curiosidade curiosidade = new Curiosidade();
+        curiosidade.setTitulo(curiosidadedto.getTitulo());
+        curiosidade.setDescricao(curiosidadedto.getDescricao());
+        var res = curiosidadeQuery.save(curiosidade);
+        return new CuriosidadeDTO(res);
+    }
 
     public CuriosidadeDTO obterCuriosidadePorId(Integer id){
         var res= curiosidadeQuery.findById(id).orElseThrow(() -> new NotFoundException("Curiosidade não encontrada.".replace("id",id.toString())));
@@ -37,11 +44,22 @@ public class CuriosidadeService {
         return curiosidades;
     }
 
-    public CuriosidadeDTO atualizarCuriosidade(Curiosidade curiosidade, Integer id){
-        obterCuriosidadePorId(id);
-        curiosidade.setId(id);
-        var res = curiosidadeQuery.save(curiosidade);
-        return new CuriosidadeDTO(res);
+    public Curiosidade atualizarCuriosidade(CuriosidadeDTO curiosidadedto){
+        Curiosidade curiosidade = curiosidadeQuery.findById(curiosidadedto.getId()).orElseThrow();
+        curiosidade.setTitulo(curiosidadedto.getTitulo());
+        curiosidade.setDescricao(curiosidadedto.getDescricao());
+        return curiosidadeQuery.save(curiosidade);
+    }
+
+    public List<CuriosidadeDTO> pesquisaCuriosidade(String titulo) {
+        var res = curiosidadeQuery.findAllbYTituloDesc(titulo);
+        List<CuriosidadeDTO> dtos = new ArrayList<>();
+
+        res.forEach(curiosidade -> {
+            CuriosidadeDTO dto = new CuriosidadeDTO(curiosidade);
+            dtos.add(dto);
+        });
+        return dtos;
     }
 
 

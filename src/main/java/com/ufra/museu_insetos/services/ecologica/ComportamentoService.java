@@ -18,7 +18,12 @@ public class ComportamentoService {
     @Autowired
     private ComportamentoQuery comportamentoQuery;
 
-    private Comportamento salvarComportamento(Comportamento comportamento){return comportamentoQuery.save(comportamento);}
+    public ComportamentoDTO salvarComportamento(ComportamentoDTO comportamentodto){
+        Comportamento comportamento = new Comportamento();
+        comportamento.setTipoComportamento(comportamentodto.getTipoComportamento());
+        var res = comportamentoQuery.save(comportamento);
+        return new ComportamentoDTO(res);
+    }
 
     public ComportamentoDTO obterComportamentoPorId(Integer id){
         var res= comportamentoQuery.findById(id).orElseThrow(() -> new NotFoundException("Comportamento não encontrado.".replace("id",id.toString())));
@@ -36,9 +41,10 @@ public class ComportamentoService {
         return comportamentos;
     }
 
-    public Comportamento atualizarComportamento(Comportamento comportamento, Integer id){
-        obterComportamentoPorId(id);
-        comportamento.setId(id);
+    public Comportamento atualizarComportamento(ComportamentoDTO comportamentodto){
+        Comportamento comportamento = comportamentoQuery.findById(comportamentodto.getId()).orElseThrow();
+        comportamento.setTipoComportamento(comportamentodto.getTipoComportamento());
         return comportamentoQuery.save(comportamento);
     }
+
 }

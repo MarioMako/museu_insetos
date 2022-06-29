@@ -25,9 +25,6 @@ public class ClassificacaoTaxonomica implements Serializable {
     @Column(name = "ID_CLASSIFICACAO_TAXONOMICA")
     private Integer id;
 
-    @Column(name = "TIPO_CLASSIFICACAO_TAXONOMICA", nullable = false)
-    private String tipoClassificacaoTaxonomica;
-
     @OneToMany(mappedBy = "classificacaoTaxonomica", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REMOVE})
     private List<Ordem> ordens;
 
@@ -39,19 +36,5 @@ public class ClassificacaoTaxonomica implements Serializable {
 
     @OneToMany(mappedBy = "classificacaoTaxonomica", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REMOVE})
     private List<Especie> especies;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ClassificacaoTaxonomica that = (ClassificacaoTaxonomica) o;
-        return id.equals(that.id) && tipoClassificacaoTaxonomica.equals(that.tipoClassificacaoTaxonomica) && ordens.equals(that.ordens) && familias.equals(that.familias) && generos.equals(that.generos) && especies.equals(that.especies);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, tipoClassificacaoTaxonomica, ordens, familias, generos, especies);
-    }
-
 
 }

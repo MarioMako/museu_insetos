@@ -4,9 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a66aeee-457e-491e-b9af-b67c931ad7db" name="Default Changelist" comment="melhora no EspecieDTO">
+    <list default="true" id="5a66aeee-457e-491e-b9af-b67c931ad7db" name="Default Changelist" comment="ajuste nos dtos">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/endpoints/CuriosidadeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/endpoints/EspecieController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/endpoints/biologica/MetamorfoseController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/endpoints/ecologia/ComportamentoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/endpoints/morfologia/AbdomenController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/endpoints/morfologia/AntenaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/endpoints/morfologia/AparelhoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/endpoints/morfologia/AsasController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/endpoints/morfologia/PernasController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/endpoints/taxonomia/FamiliaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/endpoints/taxonomia/GeneroController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/endpoints/taxonomia/OrdemController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/morfologia/DescricaoMorfologicaEspecie.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/taxonomia/ClassificacaoTaxonomicaEspecie.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/data/DataConfigurations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/data/DataConfigurations.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/dto/request/CuriosidadeDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/dto/request/CuriosidadeDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/dto/request/EspecieDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/dto/request/EspecieDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/dto/request/biologica/FaseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/dto/request/biologica/FaseDTO.java" afterDir="false" />
@@ -22,9 +35,27 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/dto/request/taxonomia/FamiliaDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/dto/request/taxonomia/FamiliaDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/dto/request/taxonomia/GeneroDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/dto/request/taxonomia/GeneroDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/dto/request/taxonomia/OrdemDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/dto/request/taxonomia/OrdemDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/Especie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/Especie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/morfologia/DescricaoMorfologica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/morfologia/DescricaoMorfologica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/taxonomia/ClassificacaoTaxonomica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/taxonomia/ClassificacaoTaxonomica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/taxonomia/Ordem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/model/taxonomia/Ordem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/query/EspecieQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/query/EspecieQuery.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/query/taxonomia/ClassificacaoTaxonomicaQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/query/taxonomia/ClassificacaoTaxonomicaQuery.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/services/CuriosidadeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/services/CuriosidadeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/services/EspecieService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/services/EspecieService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/services/biologica/FaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/services/biologica/FaseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/services/biologica/MetamorfoseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/services/biologica/MetamorfoseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/services/ecologica/ComportamentoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/services/ecologica/ComportamentoService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/services/morfologia/AbdomenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/services/morfologia/AbdomenService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/services/morfologia/AnternaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/services/morfologia/AnternaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/services/morfologia/AparelhoBucalService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/services/morfologia/AparelhoBucalService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/services/morfologia/AsasService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/services/morfologia/AsasService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/services/morfologia/DescricaoMorfologicaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/services/morfologia/DescricaoMorfologicaService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/services/morfologia/PernasService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/services/morfologia/PernasService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/services/taxonomia/ClassificacaoTaxonomicaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/services/taxonomia/ClassificacaoTaxonomicaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/services/taxonomia/FamiliaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/services/taxonomia/FamiliaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/services/taxonomia/GeneroService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/services/taxonomia/GeneroService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/services/taxonomia/OrdemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ufra/museu_insetos/services/taxonomia/OrdemService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +65,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -90,9 +122,27 @@
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.23741935" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.ufra.museu_insetos.model.morfologia" />
+      <recent name="com.ufra.museu_insetos.model.taxonomia" />
+    </key>
+  </component>
   <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MuseuInsetosApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="museu_insetos" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.ufra.museu_insetos.MuseuInsetosApplication" />
@@ -124,7 +174,26 @@
       <workItem from="1651410232987" duration="4425000" />
       <workItem from="1654621002382" duration="2977000" />
       <workItem from="1654820959085" duration="3087000" />
+      <workItem from="1654829369503" duration="74000" />
+      <workItem from="1654897008443" duration="4927000" />
+      <workItem from="1655235740290" duration="1076000" />
+      <workItem from="1655245586530" duration="609000" />
+      <workItem from="1655415969501" duration="574000" />
+      <workItem from="1655730190293" duration="3612000" />
+      <workItem from="1656181228727" duration="4264000" />
+      <workItem from="1656186975033" duration="5256000" />
+      <workItem from="1656267457414" duration="4261000" />
+      <workItem from="1656349976350" duration="12829000" />
+      <workItem from="1656420286851" duration="27836000" />
     </task>
+    <task id="LOCAL-00001" summary="ajuste nos dtos">
+      <created>1654829406316</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1654829406316</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -145,6 +214,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="commit de entidades (ainda falta melhorar as relações)" />
     <MESSAGE value="commit de entidades agora com todas as relações" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit de entidades agora com todas as relações" />
+    <MESSAGE value="ajuste nos dtos" />
+    <option name="LAST_COMMIT_MESSAGE" value="ajuste nos dtos" />
   </component>
 </project>

@@ -3,6 +3,7 @@ package com.ufra.museu_insetos.services.taxonomia;
 import com.ufra.museu_insetos.dto.request.taxonomia.FamiliaDTO;
 import com.ufra.museu_insetos.model.taxonomia.Familia;
 import com.ufra.museu_insetos.query.taxonomia.FamiliaQuery;
+import com.ufra.museu_insetos.query.taxonomia.OrdemQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,8 +19,16 @@ public class FamiliaService {
 
     @Autowired
     private FamiliaQuery familiaQuery;
+    @Autowired
+    private OrdemQuery ordemQuery;
 
-    public Familia salvarFamilia(Familia familia) { return familiaQuery.save(familia); }
+    public FamiliaDTO salvarFamilia(FamiliaDTO familiadto) {
+        Familia familia = new Familia();
+        familia.setNomeFamilia(familiadto.getNomeFamilia());
+        familia.setOrdem(ordemQuery.findById(familiadto.getOrdem().getId()).orElseThrow());
+        var res = familiaQuery.save(familia);
+        return new FamiliaDTO(res);
+    }
 
     public FamiliaDTO obterFamiliaPorId(Integer id){
         var res= familiaQuery.findById(id).orElseThrow(() -> new NotFoundException("Familia não encontrada.".replace("id",id.toString())));
@@ -31,11 +40,10 @@ public class FamiliaService {
         familiaQuery.delete(familia);
     }
 
-    public FamiliaDTO atualizarFamilia(Familia familia, Integer id){
-        obterFamiliaPorId(id);
-        familia.setId(id);
-        var res = familiaQuery.save(familia);
-        return new FamiliaDTO(res);
+    public Familia atualizarFamilia(FamiliaDTO familiadto){
+        Familia familia = familiaQuery.findById(familiadto.getId()).orElseThrow();
+        familia.setNomeFamilia(familiadto.getNomeFamilia());
+        return familiaQuery.save(familia);
     }
 
     public List<FamiliaDTO> getAllFamilias(){

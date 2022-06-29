@@ -18,7 +18,12 @@ public class AbdomenService {
     @Autowired
     private AbdomenQuery abdomenQuery;
 
-    public Abdomen salvarAbdomen(Abdomen abdomen){return abdomenQuery.save(abdomen);}
+    public AbdomenDTO salvarAbdomen(AbdomenDTO abdomendto){
+        Abdomen abdomen = new Abdomen();
+        abdomen.setTipoAbdomen(abdomendto.getTipoAbdomen());
+        var res = abdomenQuery.save(abdomen);
+        return new AbdomenDTO(res);
+    }
 
     public AbdomenDTO obterAbdomenPorId(Integer id){
         var res= abdomenQuery.findById(id).orElseThrow(() -> new NotFoundException("Abdomen não encontrado.".replace("id",id.toString())));
@@ -36,10 +41,9 @@ public class AbdomenService {
         return abdomens;
     }
 
-    public AbdomenDTO atualizarAbdomen(Abdomen abdomen, Integer id){
-        obterAbdomenPorId(id);
-        abdomen.setId(id);
-        var res = abdomenQuery.save(abdomen);
-        return new AbdomenDTO(res);
+    public Abdomen atualizarAbdomen(AbdomenDTO abdomendto){
+        Abdomen abdomen = abdomenQuery.findById(abdomendto.getId()).orElseThrow();
+        abdomen.setTipoAbdomen(abdomendto.getTipoAbdomen());
+        return abdomenQuery.save(abdomen);
     }
 } 

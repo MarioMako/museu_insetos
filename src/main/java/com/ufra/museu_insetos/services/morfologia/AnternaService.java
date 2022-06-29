@@ -2,6 +2,7 @@ package com.ufra.museu_insetos.services.morfologia;
 
 import com.ufra.museu_insetos.dto.request.morfologia.AntenaDTO;
 import com.ufra.museu_insetos.model.morfologia.Antena;
+import com.ufra.museu_insetos.model.morfologia.Antena;
 import com.ufra.museu_insetos.query.morfologia.AntenaQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,12 @@ public class AnternaService {
     @Autowired
     private AntenaQuery antenaQuery;
 
-    public Antena salvarAntena(Antena antena){return antenaQuery.save(antena);}
+    public AntenaDTO salvarAntena(AntenaDTO antenadto){
+        Antena antena = new Antena();
+        antena.setTipoAntena(antenadto.getTipoAntena());
+        var res = antenaQuery.save(antena);
+        return new AntenaDTO(res);
+    }
 
     public AntenaDTO obterAntenaPorId(Integer id){
         var res = antenaQuery.findById(id).orElseThrow(() -> new NotFoundException("Antena não encontrada.".replace("id",id.toString())));
@@ -36,10 +42,9 @@ public class AnternaService {
         return antenas;
     }
 
-    public AntenaDTO atualizarAntena(Antena antena, Integer id){
-        obterAntenaPorId(id);
-        antena.setId(id);
-        var res = antenaQuery.save(antena);
-        return new AntenaDTO(res);
+    public Antena atualizarAntena(AntenaDTO antenadto){
+        Antena antena = antenaQuery.findById(antenadto.getId()).orElseThrow();
+        antena.setTipoAntena(antenadto.getTipoAntena());
+        return antenaQuery.save(antena);
     }
 }

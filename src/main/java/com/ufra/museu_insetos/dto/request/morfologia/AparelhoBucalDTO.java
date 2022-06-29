@@ -13,6 +13,9 @@ import javax.validation.constraints.Size;
 @Setter
 public class AparelhoBucalDTO {
 
+    @NotNull
+    private Integer id;
+
     @NotBlank
     @Size(min = 2)
     private String tipoAparalhoBucal;

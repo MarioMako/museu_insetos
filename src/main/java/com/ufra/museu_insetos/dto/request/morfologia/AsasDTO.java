@@ -12,6 +12,9 @@ import javax.validation.constraints.Size;
 @Setter
 public class AsasDTO {
 
+    @NotNull
+    private Integer id;
+
     @NotBlank
     @Size(min = 2)
     private String tipoAsas;

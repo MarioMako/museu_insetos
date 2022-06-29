@@ -15,6 +15,9 @@ import java.util.List;
 @Setter
 public class ClassificacaoTaxonomicaDTO {
 
+    @NotNull
+    private Integer id;
+
     @NotBlank
     @Size(min = 2)
     private String tipoClassificacaoTaxonomica;

@@ -13,6 +13,8 @@ import javax.validation.constraints.Size;
 @Setter
 public class PernasDTO {
 
+    @NotNull
+    private Integer id;
 
     @NotBlank
     @Size(min = 2)

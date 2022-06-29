@@ -22,6 +22,9 @@ import java.util.List;
 @Setter
 public class EspecieDTO {
 
+    @NotNull
+    private Integer id;
+
     @NotBlank
     @Size(min = 2, max = 25)
     private String nomeCientifico;
