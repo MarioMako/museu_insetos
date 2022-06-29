@@ -1,45 +1,27 @@
 package com.ufra.museu_insetos.model.morfologia;
 
-import br.com.wpe.api.persistence.bean.AbstractEntity;
-import com.ufra.museu_insetos.model.taxonomia.Familia;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
-@Entity
-@Table(
-        name = "ANTENA"
-)
+import java.io.Serializable;
 
+@Entity
+@Table(name = "ANTENA")
 @Getter
 @Setter
-public class Antena extends AbstractEntity {
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+public class Antena implements Serializable {
+
+    private static final long serialVersionUID = 4685179000935636882L;
 
     @Id
-    @GeneratedValue(
-            strategy = GenerationType.IDENTITY
-    )
-    @Column(
-            name = "ID_ANTENA"
-    )
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID_ANTENA")
+    private Integer id;
 
-    @Column(
-            name = "TIPO"
-    )
-    private String tipo;
+    @Column(name = "TIPO_ANTENA", nullable = false)
+    private String tipoAntena;
 
-    @ManyToOne
-    @JoinColumn(name="ID_DESCRICAO_MORFOLOGICA",nullable = false)
-    private DescricaoMorfologica descricaoMorfologica_id;
-
-    public Antena() {
-    }
-    public Object getId() {
-        return this.id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 }

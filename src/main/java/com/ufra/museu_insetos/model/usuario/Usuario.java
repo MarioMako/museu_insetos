@@ -1,58 +1,43 @@
 package com.ufra.museu_insetos.model.usuario;
 
-import br.com.wpe.api.persistence.bean.AbstractEntity;
-import com.ufra.museu_insetos.model.taxonomia.Genero;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(
-        name = "USUARIO"
-)
-
+@Table(name = "USUARIO")
 @Getter
 @Setter
-public class Usuario extends AbstractEntity {
+@AllArgsConstructor
+@NoArgsConstructor
+public class Usuario implements Serializable {
+
+
+    private static final long serialVersionUID = 5159969296023123456L;
 
     @Id
-    @GeneratedValue(
-            strategy = GenerationType.IDENTITY
-    )
-    @Column(
-            name = "ID_USUARIO"
-    )
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID_USUARIO")
+    private Long id;
 
-    @Column(
-            name = "NOME"
-    )
+    @Column(name = "NOME", nullable = false)
     private String nome;
 
     @CPF
-    @Column(
-            name = "CPF"
-    )
+    @Column(name = "CPF")
     private String cpf;
 
-    @Column(
-            name = "LOGIN"
-    )
+    @Column(name = "LOGIN", nullable = false, unique = true)
     private String login;
 
-    @OneToMany(mappedBy="usuario", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REMOVE })
     private List<Acesso> acessos;
 
-    public Usuario() {
-    }
-    public Object getId() {
-        return this.id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 }

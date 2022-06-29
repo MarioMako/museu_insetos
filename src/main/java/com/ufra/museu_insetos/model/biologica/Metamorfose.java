@@ -1,51 +1,36 @@
 package com.ufra.museu_insetos.model.biologica;
 
-import br.com.wpe.api.persistence.bean.AbstractEntity;
 import com.ufra.museu_insetos.model.Especie;
-import com.ufra.museu_insetos.model.taxonomia.Genero;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(
-        name = "METAMORFOSE"
-)
-
+@Table(name = "METAMORFOSE")
 @Getter
 @Setter
-public class Metamorfose extends AbstractEntity {
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+public class Metamorfose implements Serializable {
+
+    private static final long serialVersionUID = -9029098455045980874L;
 
     @Id
-    @GeneratedValue(
-            strategy = GenerationType.IDENTITY
-    )
-    @Column(
-            name = "ID_METAMORFOSE"
-    )
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID_METAMORFOSE")
+    private Integer id;
 
-    @Column(
-            name = "TIPO"
-    )
-    private String tipo;
+    @Column(name = "TIPO_METAMORFOSE", nullable = false)
+    private String tipoMetamorfose;
 
-    @OneToMany(mappedBy="metamorfose", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "metamorfose", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REMOVE})
     private List<Fase> fases;
 
-    @OneToMany(mappedBy="metamorfose", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "metamorfose", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REMOVE})
     private List<Especie> especies;
 
-    public Metamorfose() {
-    }
 
-    public Object getId() {
-        return this.id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 }

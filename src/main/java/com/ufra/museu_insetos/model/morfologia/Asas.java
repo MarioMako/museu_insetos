@@ -1,45 +1,27 @@
 package com.ufra.museu_insetos.model.morfologia;
 
-import br.com.wpe.api.persistence.bean.AbstractEntity;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
-@Entity
-@Table(
-        name = "ASAS"
-)
+import java.io.Serializable;
 
+@Entity
+@Table(name = "ASAS")
 @Getter
 @Setter
-public class Asas extends AbstractEntity {
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+public class Asas implements Serializable {
+
+    private static final long serialVersionUID = -5323418028866542183L;
 
     @Id
-    @GeneratedValue(
-            strategy = GenerationType.IDENTITY
-    )
-    @Column(
-            name = "ID_ASAS"
-    )
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID_ASAS")
+    private Integer id;
 
-    @Column(
-            name = "TIPO"
-    )
-    private String tipo;
+    @Column(name = "TIPO_ASAS", nullable = false)
+    private String tipoAsas;
 
-    @ManyToOne
-    @JoinColumn(name="ID_DESCRICAO_MORFOLOGICA",nullable = false)
-    private DescricaoMorfologica descricaoMorfologica_id;
-
-    public Asas() {
-    }
-
-    public Object getId() {
-        return this.id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 }

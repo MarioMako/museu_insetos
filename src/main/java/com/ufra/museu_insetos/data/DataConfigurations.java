@@ -16,14 +16,15 @@ public class DataConfigurations {
     @Configuration
     @Profile("dev")
     public class DataConfiguration {
+
         @Bean
         public DataSource dataSource(){
             DriverManagerDataSource dataSource = new DriverManagerDataSource();
             dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
 
-            dataSource.setUrl("jdbc:mysql://localhost:3306/tabela_insetos");
-            dataSource.setUsername("lnovik");
-            dataSource.setPassword("luannovik");
+            dataSource.setUrl("jdbc:mysql://localhost:3306/museu_insetos");
+            dataSource.setUsername("root");
+            dataSource.setPassword("root1234");
             return dataSource;
         }
         @Bean

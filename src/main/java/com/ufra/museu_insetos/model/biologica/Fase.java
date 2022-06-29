@@ -1,51 +1,33 @@
 package com.ufra.museu_insetos.model.biologica;
 
-import br.com.wpe.api.persistence.bean.AbstractEntity;
-import com.ufra.museu_insetos.model.biologica.Metamorfose;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
-@Entity
-@Table(
-        name = "FASE"
-)
+import java.io.Serializable;
 
+@Entity
+@Table(name = "FASE")
 @Getter
 @Setter
-public class Fase extends AbstractEntity {
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
+public class Fase implements Serializable {
 
     @Id
-    @GeneratedValue(
-            strategy = GenerationType.IDENTITY
-    )
-    @Column(
-            name = "ID_FASE"
-    )
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID_FASE")
+    private Integer id;
 
-    @Column(
-            name = "DESCRICAO"
-    )
-    private String descricao;
+    @Column(name = "DESCRICAO_FASE", nullable = false)
+    private String descricaoFase;
 
-    @Column(
-            name = "TEMPO"
-    )
-    private String tempo;
+    @Column(name = "TEMPO_FASE", nullable = false)
+    private String tempoFase;
 
-    @ManyToOne
-    @JoinColumn(name="ID_METAMORFOSE",nullable = false)
-    private Metamorfose metamorfose_id;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ID_METAMORFOSE", nullable = false)
+    private Metamorfose metamorfose;
 
-    public Fase() {
-    }
 
-    public Object getId() {
-        return this.id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 }
