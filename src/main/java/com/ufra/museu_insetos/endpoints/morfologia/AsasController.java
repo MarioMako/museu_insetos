@@ -18,18 +18,18 @@ import java.util.Optional;
 
 @Controller
 @ResponseBody
-@RequestMapping("api/asas")
+@RequestMapping(value ="api/asas")
 public class AsasController {
 
     @Autowired
     AsasService service;
 
-    @GetMapping("asas")
+    @GetMapping("asas/getall")
     public ResponseEntity<List<AsasDTO>> getAll(){
         return new ResponseEntity<>(service.getAllAsas(), HttpStatus.OK);
     }
 
-    @GetMapping("asas/{id}")
+    @GetMapping("asas/getbyid/{id}")
     public ResponseEntity<AsasDTO> getById(@PathVariable Integer id){
         Optional<AsasDTO> asas = Optional.ofNullable(service.obterAsasPorId(id));
         if (asas.isPresent()) {
@@ -39,7 +39,7 @@ public class AsasController {
         }
     }
 
-    @PostMapping(path = "asas", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "asas/create", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AsasDTO> create(@RequestBody AsasDTO asas){
         var res = service.salvarAsas(asas);
         if (res == null) {
@@ -49,12 +49,12 @@ public class AsasController {
         }
     }
 
-    @DeleteMapping("asas/{id}")
+    @DeleteMapping("asas/delete/{id}")
     public void delete(@PathVariable(value = "id") Integer id){
         service.excluirAsas(id);
     }
 
-    @PutMapping("asas")
+    @PutMapping("asas/update")
     public ResponseEntity<AsasDTO> update(@Valid @RequestBody AsasDTO asas) throws ConfigDataResourceNotFoundException {
         service.atualizarAsas(asas);
         return ResponseEntity.ok(asas);

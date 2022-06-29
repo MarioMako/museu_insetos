@@ -22,19 +22,19 @@ public class ClassificacaoTaxonomicaEspecie implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID_CLASSIFICACAO_TAXONOMICA")
+    @Column(name = "ID_CLASSIFICACAO_TAXONOMICA_ESPECIE")
     private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @Column(name = "ORDEM")
+    @JoinColumn(name = "ORDEM")
     private Ordem ordem;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @Column(name = "FAMILIA")
+    @JoinColumn(name = "FAMILIA")
     private Familia familia;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @Column(name = "GENERO")
+    @JoinColumn(name = "GENERO")
     private Genero genero;
 
     @Override

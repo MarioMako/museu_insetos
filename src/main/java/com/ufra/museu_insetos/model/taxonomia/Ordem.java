@@ -30,16 +30,4 @@ public class Ordem implements Serializable {
     @OneToMany(mappedBy = "ordem", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REMOVE})
     private List<Familia> familias;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Ordem ordem = (Ordem) o;
-        return Objects.equals(id, ordem.id) && Objects.equals(nomeOrdem, ordem.nomeOrdem) && Objects.equals(familias, ordem.familias);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, nomeOrdem, familias);
-    }
 }

@@ -17,18 +17,18 @@ import java.util.Optional;
 
 @Controller
 @ResponseBody
-@RequestMapping("api/antena")
+@RequestMapping(value ="api/antena")
 public class AntenaController {
 
     @Autowired
     AnternaService service;
 
-    @GetMapping("antena")
+    @GetMapping("antena/getall")
     public ResponseEntity<List<AntenaDTO>> getAll(){
         return new ResponseEntity<>(service.getAllAntenas(), HttpStatus.OK);
     }
 
-    @GetMapping("antena/{id}")
+    @GetMapping("antena/getbyid/{id}")
     public ResponseEntity<AntenaDTO> getById(@PathVariable Integer id){
         Optional<AntenaDTO> antena = Optional.ofNullable(service.obterAntenaPorId(id));
         if (antena.isPresent()) {
@@ -38,7 +38,7 @@ public class AntenaController {
         }
     }
 
-    @PostMapping(path = "antena", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "antena/create", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AntenaDTO> create(@RequestBody AntenaDTO antena){
         var res = service.salvarAntena(antena);
         if (res == null) {
@@ -48,12 +48,12 @@ public class AntenaController {
         }
     }
 
-    @DeleteMapping("antena/{id}")
+    @DeleteMapping("antena/delete/{id}")
     public void delete(@PathVariable(value = "id") Integer id){
         service.excluirAntena(id);
     }
 
-    @PutMapping("antena")
+    @PutMapping("antena/update")
     public ResponseEntity<AntenaDTO> update(@Valid @RequestBody AntenaDTO antena) throws ConfigDataResourceNotFoundException {
         service.atualizarAntena(antena);
         return ResponseEntity.ok(antena);

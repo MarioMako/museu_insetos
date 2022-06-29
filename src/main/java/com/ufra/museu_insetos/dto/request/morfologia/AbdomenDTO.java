@@ -1,7 +1,6 @@
 package com.ufra.museu_insetos.dto.request.morfologia;
 
 import com.ufra.museu_insetos.model.morfologia.Abdomen;
-import com.ufra.museu_insetos.model.morfologia.DescricaoMorfologica;
 import lombok.*;
 
 import javax.validation.Valid;
@@ -22,7 +21,7 @@ public class AbdomenDTO {
 
     @Valid
     @NotNull
-    private DescricaoMorfologicaDTO descricaoMorfologica;
+    private DescricaoMorfologicaEspecieDTO descricaoMorfologica;
 
     public AbdomenDTO(Abdomen abdomen) {
         this.tipoAbdomen = abdomen.getTipoAbdomen();

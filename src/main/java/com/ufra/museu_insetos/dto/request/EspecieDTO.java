@@ -1,12 +1,9 @@
 package com.ufra.museu_insetos.dto.request;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ufra.museu_insetos.dto.request.biologica.MetamorforseDTO;
 import com.ufra.museu_insetos.dto.request.ecologica.ComportamentoDTO;
-import com.ufra.museu_insetos.dto.request.morfologia.DescricaoMorfologicaDTO;
-import com.ufra.museu_insetos.dto.request.taxonomia.ClassificacaoTaxonomicaDTO;
-import com.ufra.museu_insetos.dto.request.taxonomia.FamiliaDTO;
-import com.ufra.museu_insetos.dto.request.taxonomia.OrdemDTO;
+import com.ufra.museu_insetos.dto.request.morfologia.DescricaoMorfologicaEspecieDTO;
+import com.ufra.museu_insetos.dto.request.taxonomia.ClassificacaoTaxonomicaEspecieDTO;
 import com.ufra.museu_insetos.model.Especie;
 import com.ufra.museu_insetos.model.ecologica.HabitatEnum;
 
@@ -16,7 +13,6 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.List;
 
 @Getter
 @Setter
@@ -39,7 +35,7 @@ public class EspecieDTO {
 
     @NotBlank
     @Size(min = 2)
-    private String urlImagem;
+    private byte[] urlImagem;
 
     @Valid
     @NotNull
@@ -55,11 +51,11 @@ public class EspecieDTO {
 
     @Valid
     @NotNull
-    private DescricaoMorfologicaDTO descricaoMorfologica;
+    private DescricaoMorfologicaEspecieDTO descricaoMorfologica;
 
     @Valid
     @NotNull
-    private ClassificacaoTaxonomicaDTO classificacaoTaxonomica;
+    private ClassificacaoTaxonomicaEspecieDTO classificacaoTaxonomica;
 
 
     public EspecieDTO(Especie e){
@@ -70,7 +66,7 @@ public class EspecieDTO {
         this.habitat = e.getHabitat();
         this.comportamento = new ComportamentoDTO(e.getComportamento());
         this.metamorfose = new MetamorforseDTO(e.getMetamorfose());
-        this.descricaoMorfologica = new DescricaoMorfologicaDTO(e.getDescricaoMorfologica());
-        this.classificacaoTaxonomica = new ClassificacaoTaxonomicaDTO(e.getClassificacaoTaxonomica());
+        this.descricaoMorfologica = new DescricaoMorfologicaEspecieDTO(e.getDescricaoMorfologicaEspecie());
+        this.classificacaoTaxonomica = new ClassificacaoTaxonomicaEspecieDTO(e.getClassificacaoTaxonomicaEspecie());
     }
 }

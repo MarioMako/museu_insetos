@@ -26,24 +26,8 @@ public class Genero implements Serializable {
     private String nomeGenero;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ID_CLASSIFICAÇÃO_TAXONOMICA", nullable = false)
-    private ClassificacaoTaxonomica classificacaoTaxonomica;
-
-    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ID_FAMILIA", nullable = false)
     private Familia familia;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Genero genero = (Genero) o;
-        return id.equals(genero.id) && nomeGenero.equals(genero.nomeGenero) && classificacaoTaxonomica.equals(genero.classificacaoTaxonomica) && familia.equals(genero.familia);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, nomeGenero, classificacaoTaxonomica, familia);
-    }
 
 }

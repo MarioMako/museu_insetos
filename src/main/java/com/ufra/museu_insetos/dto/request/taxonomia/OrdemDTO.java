@@ -24,7 +24,7 @@ public class OrdemDTO {
 
     @Valid
     @NotNull
-    private ClassificacaoTaxonomicaDTO classificacaoTaxonomica;
+    private ClassificacaoTaxonomicaEspecieDTO classificacaoTaxonomica;
 
     @Valid
     @NotNull

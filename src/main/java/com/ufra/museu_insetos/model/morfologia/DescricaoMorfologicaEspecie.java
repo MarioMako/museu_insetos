@@ -6,6 +6,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "DESCRICAO_MORFOLOGICA")
@@ -20,27 +21,39 @@ public class DescricaoMorfologicaEspecie implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID_DESCRICAO_MORFOLOGICA")
+    @Column(name = "ID_DESCRICAO_MORFOLOGICA_ESPECIE")
     private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @Column(name = "ABDOMEN")
+    @JoinColumn (name = "ABDOMEN")
     private Abdomen abdomen;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @Column(name = "ANTENA")
+    @JoinColumn(name = "ANTENA")
     private Antena antena;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @Column(name = "APARELHO_BUCAL")
+    @JoinColumn(name = "APARELHO_BUCAL")
     private AparelhoBucal aparelho;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @Column(name = "ASAS")
+    @JoinColumn(name = "ASAS")
     private Asas asas;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @Column(name = "PERNAS")
+    @JoinColumn(name = "PERNAS")
     private Pernas pernas;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DescricaoMorfologicaEspecie that = (DescricaoMorfologicaEspecie) o;
+        return Objects.equals(id, that.id) && Objects.equals(abdomen, that.abdomen) && Objects.equals(antena, that.antena) && Objects.equals(aparelho, that.aparelho) && Objects.equals(asas, that.asas) && Objects.equals(pernas, that.pernas);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, abdomen, antena, aparelho, asas, pernas);
+    }
 }

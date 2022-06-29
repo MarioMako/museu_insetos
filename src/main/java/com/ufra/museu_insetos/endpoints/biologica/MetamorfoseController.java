@@ -18,18 +18,18 @@ import java.util.Optional;
 
 @Controller
 @ResponseBody
-@RequestMapping("/api/metamorfose")
+@RequestMapping(value ="/api/metamorfose")
 public class MetamorfoseController {
 
     @Autowired
     MetamorfoseService service;
 
-    @GetMapping("metamorfose")
+    @GetMapping("metamorfose/getall")
     public ResponseEntity<List<MetamorforseDTO>> getAll(){
         return new ResponseEntity<>(service.getAllMetamorfoses(), HttpStatus.OK);
     }
 
-    @GetMapping("metamorfose/{id}")
+    @GetMapping("metamorfose/getbyid/{id}")
     public ResponseEntity<MetamorforseDTO> getById(@PathVariable Integer id){
         Optional<MetamorforseDTO> metamorfose = Optional.ofNullable(service.obterMetamorfosePorId(id));
         if (metamorfose.isPresent()) {
@@ -39,7 +39,7 @@ public class MetamorfoseController {
         }
     }
 
-    @PostMapping(path = "metamorfose", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "metamorfose/create", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<MetamorforseDTO> create(@RequestBody MetamorforseDTO metamorfose){
         var res = service.salvarMetamorfose(metamorfose);
         if (res == null) {
@@ -49,12 +49,12 @@ public class MetamorfoseController {
         }
     }
 
-    @DeleteMapping("metamorfose/{id}")
+    @DeleteMapping("metamorfose/delete/{id}")
     public void delete(@PathVariable(value = "id") Integer id){
         service.excluirMetamorfose(id);
     }
 
-    @PutMapping("metamorfose")
+    @PutMapping("metamorfose/update")
     public ResponseEntity<MetamorforseDTO> update(@Valid @RequestBody MetamorforseDTO metamorfose) throws ConfigDataResourceNotFoundException {
         service.atualizarMetamorfose(metamorfose);
         return ResponseEntity.ok(metamorfose);

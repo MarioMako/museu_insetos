@@ -17,18 +17,18 @@ import java.util.Optional;
 
 @Controller
 @ResponseBody
-@RequestMapping("api/ordem")
+@RequestMapping(value ="api/ordem")
 public class OrdemController {
 
     @Autowired
     OrdemService service;
 
-    @GetMapping("ordem")
+    @GetMapping("ordem/getall")
     public ResponseEntity<List<OrdemDTO>> getAll(){
         return new ResponseEntity<>(service.getAllOrdens(), HttpStatus.OK);
     }
 
-    @GetMapping("ordem/{id}")
+    @GetMapping("ordem/getbyid/{id}")
     public ResponseEntity<OrdemDTO> getById(@PathVariable Integer id){
         Optional<OrdemDTO> ordem = Optional.ofNullable(service.obterOrdemPorId(id));
         if (ordem.isPresent()) {
@@ -38,7 +38,7 @@ public class OrdemController {
         }
     }
 
-    @PostMapping(path = "ordem", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "ordem/create", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<OrdemDTO> create(@RequestBody OrdemDTO ordem){
         var res = service.salvarOrdem(ordem);
         if (res == null) {
@@ -48,12 +48,12 @@ public class OrdemController {
         }
     }
 
-    @DeleteMapping("ordem/{id}")
+    @DeleteMapping("ordem/delete/{id}")
     public void delete(@PathVariable(value = "id") Integer id){
         service.excluirOrdem(id);
     }
 
-    @PutMapping("ordem")
+    @PutMapping("ordem/update")
     public ResponseEntity<OrdemDTO> update(@Valid @RequestBody OrdemDTO ordem) throws ConfigDataResourceNotFoundException {
         service.atualizarOrdem(ordem);
         return ResponseEntity.ok(ordem);

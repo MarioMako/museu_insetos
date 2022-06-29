@@ -17,18 +17,18 @@ import java.util.Optional;
 
 @Controller
 @ResponseBody
-@RequestMapping("api/genero")
+@RequestMapping(value ="api/genero")
 public class GeneroController {
 
     @Autowired
     GeneroService service;
 
-    @GetMapping("genero")
+    @GetMapping("genero/getall")
     public ResponseEntity<List<GeneroDTO>> getAll(){
         return new ResponseEntity<>(service.getAllGeneros(), HttpStatus.OK);
     }
 
-    @GetMapping("genero/{id}")
+    @GetMapping("genero/getbyid/{id}")
     public ResponseEntity<GeneroDTO> getById(@PathVariable Integer id){
         Optional<GeneroDTO> genero = Optional.ofNullable(service.obterGeneroPorId(id));
         if (genero.isPresent()) {
@@ -38,7 +38,7 @@ public class GeneroController {
         }
     }
 
-    @PostMapping(path = "genero", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "genero/create", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<GeneroDTO> create(@RequestBody GeneroDTO genero){
         var res = service.salvarGenero(genero);
         if (res == null) {
@@ -48,15 +48,25 @@ public class GeneroController {
         }
     }
 
-    @DeleteMapping("genero/{id}")
+    @DeleteMapping("genero/delete/{id}")
     public void delete(@PathVariable(value = "id") Integer id){
         service.excluirGenero(id);
     }
 
-    @PutMapping("genero")
+    @PutMapping("genero/update")
     public ResponseEntity<GeneroDTO> update(@Valid @RequestBody GeneroDTO genero) throws ConfigDataResourceNotFoundException {
         service.atualizarGenero(genero);
         return ResponseEntity.ok(genero);
+    }
+
+    @GetMapping("genero/filtro/{id}")
+    public ResponseEntity<List<GeneroDTO>> getFiltro(@PathVariable Integer id){
+        List<GeneroDTO> genero = service.getGeneroByFamilia(id);
+        if (genero != null) {
+            return new ResponseEntity<>(genero, HttpStatus.OK);
+        } else {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,("Item necessitado não preenchido"));
+        }
     }
 
 }

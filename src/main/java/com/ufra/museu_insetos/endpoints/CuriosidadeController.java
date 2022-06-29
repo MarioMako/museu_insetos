@@ -17,18 +17,18 @@ import java.util.Optional;
 
 @Controller
 @ResponseBody
-@RequestMapping("api/curiosidade")
+@RequestMapping(value ="api/curiosidade")
 public class CuriosidadeController {
 
     @Autowired
     CuriosidadeService service;
 
-    @GetMapping("curiosidade")
+    @GetMapping("curiosidade/getall")
     public ResponseEntity<List<CuriosidadeDTO>> getAll(){
         return new ResponseEntity<>(service.getAllCuriosidades(), HttpStatus.OK);
     }
 
-    @GetMapping("curiosidade/{id}")
+    @GetMapping("curiosidade/getbyid/{id}")
     public ResponseEntity<CuriosidadeDTO> getById(@PathVariable Integer id){
         Optional<CuriosidadeDTO> curiosidade = Optional.ofNullable(service.obterCuriosidadePorId(id));
         if (curiosidade.isPresent()) {
@@ -38,7 +38,7 @@ public class CuriosidadeController {
         }
     }
 
-    @PostMapping(path = "curiosidade", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "curiosidade/create", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<CuriosidadeDTO> create(@RequestBody CuriosidadeDTO curiosidade){
         var res = service.salvarCuriosidade(curiosidade);
         if (res == null) {
@@ -48,14 +48,25 @@ public class CuriosidadeController {
         }
     }
 
-    @DeleteMapping("curiosidade/{id}")
+    @DeleteMapping("curiosidade/delete/{id}")
     public void delete(@PathVariable(value = "id") Integer id){
         service.excluirCuriosidade(id);
     }
 
-    @PutMapping("curiosidade")
+    @PutMapping("curiosidade/update")
     public ResponseEntity<CuriosidadeDTO> update(@Valid @RequestBody CuriosidadeDTO curiosidade) throws ConfigDataResourceNotFoundException {
         service.atualizarCuriosidade(curiosidade);
         return ResponseEntity.ok(curiosidade);
     }
+
+    @GetMapping("curiosidade/pesquisa/{titulo}")
+    public ResponseEntity<List<CuriosidadeDTO>> getPesquisa(@PathVariable String titulo){
+        List<CuriosidadeDTO> curiosidade = service.pesquisaCuriosidade(titulo);
+        if (curiosidade != null) {
+            return new ResponseEntity<>(curiosidade, HttpStatus.OK);
+        } else {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,("Item necessitado não preenchido"));
+        }
+    }
+
 }

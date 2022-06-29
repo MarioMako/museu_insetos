@@ -21,7 +21,7 @@ public class AsasDTO {
 
     @Valid
     @NotNull
-    private DescricaoMorfologicaDTO descricaoMorfologica;
+    private DescricaoMorfologicaEspecieDTO descricaoMorfologica;
 
 
     public AsasDTO(Asas asas) {

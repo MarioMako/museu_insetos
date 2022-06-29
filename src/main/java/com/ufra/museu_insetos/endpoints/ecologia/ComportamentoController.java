@@ -17,18 +17,18 @@ import java.util.Optional;
 
 @Controller
 @ResponseBody
-@RequestMapping("api/comportamento")
+@RequestMapping(value ="api/comportamento")
 public class ComportamentoController {
 
     @Autowired
     ComportamentoService service;
 
-    @GetMapping("comportamento")
+    @GetMapping("comportamento/getall")
     public ResponseEntity<List<ComportamentoDTO>> getAll(){
         return new ResponseEntity<>(service.getAllComportamentos(), HttpStatus.OK);
     }
 
-    @GetMapping("comportamento/{id}")
+    @GetMapping("comportamento/getbyid/{id}")
     public ResponseEntity<ComportamentoDTO> getById(@PathVariable Integer id){
         Optional<ComportamentoDTO> comportamento = Optional.ofNullable(service.obterComportamentoPorId(id));
         if (comportamento.isPresent()) {
@@ -38,7 +38,7 @@ public class ComportamentoController {
         }
     }
 
-    @PostMapping(path = "Comportamento", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "comportamento/create", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ComportamentoDTO> create(@RequestBody ComportamentoDTO comportamento){
         var res = service.salvarComportamento(comportamento);
         if (res == null) {
@@ -48,12 +48,12 @@ public class ComportamentoController {
         }
     }
 
-    @DeleteMapping("Comportamento/{id}")
+    @DeleteMapping("comportamento/delete/{id}")
     public void delete(@PathVariable(value = "id") Integer id){
         service.excluirComportamento(id);
     }
 
-    @PutMapping("Comportamento")
+    @PutMapping("comportamento/update")
     public ResponseEntity<ComportamentoDTO> update(@Valid @RequestBody ComportamentoDTO Comportamento) throws ConfigDataResourceNotFoundException {
         service.atualizarComportamento(Comportamento);
         return ResponseEntity.ok(Comportamento);

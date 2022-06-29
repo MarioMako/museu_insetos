@@ -22,7 +22,7 @@ public class PernasDTO {
 
     @Valid
     @NotNull
-    private DescricaoMorfologicaDTO descricaoMorfologica;
+    private DescricaoMorfologicaEspecieDTO descricaoMorfologica;
 
 
     public PernasDTO(Pernas pernas) {

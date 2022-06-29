@@ -22,9 +22,4 @@ public class AparelhoBucal implements Serializable {
     @Column(name = "TIPO_APARELHOBUCAL", nullable = false)
     private String tipoAparalhoBucal;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ID_DESCRICAO_MORFOLOGICA", nullable = false)
-    private DescricaoMorfologica descricaoMorfologica;
-
-
 }

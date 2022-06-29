@@ -24,9 +24,4 @@ public class Antena implements Serializable {
     @Column(name = "TIPO_ANTENA", nullable = false)
     private String tipoAntena;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ID_DESCRICAO_MORFOLOGICA", nullable = false)
-    private DescricaoMorfologica descricaoMorfologica;
-
-
 }

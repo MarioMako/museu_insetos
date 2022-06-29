@@ -21,7 +21,7 @@ public class AntenaDTO {
 
     @Valid
     @NotNull
-    private DescricaoMorfologicaDTO descricaoMorfologica;
+    private DescricaoMorfologicaEspecieDTO descricaoMorfologica;
 
     public AntenaDTO(Antena antena) {
         this.tipoAntena = antena.getTipoAntena();

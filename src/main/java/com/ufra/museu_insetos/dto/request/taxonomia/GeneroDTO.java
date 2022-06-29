@@ -25,7 +25,7 @@ public class GeneroDTO {
 
     @Valid
     @NotNull
-    private ClassificacaoTaxonomicaDTO classificacaoTaxonomica;
+    private ClassificacaoTaxonomicaEspecieDTO classificacaoTaxonomica;
 
     public GeneroDTO(Genero genero) {
         this.nomeGenero = genero.getNomeGenero();

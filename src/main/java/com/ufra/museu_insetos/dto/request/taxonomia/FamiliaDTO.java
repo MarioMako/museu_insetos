@@ -1,5 +1,6 @@
 package com.ufra.museu_insetos.dto.request.taxonomia;
 
+import com.ufra.museu_insetos.dto.request.morfologia.DescricaoMorfologicaEspecieDTO;
 import com.ufra.museu_insetos.model.taxonomia.Familia;
 import lombok.*;
 
@@ -26,6 +27,10 @@ public class FamiliaDTO {
     @Valid
     @NotNull
     private OrdemDTO ordem;
+
+    @Valid
+    @NotNull
+    private DescricaoMorfologicaEspecieDTO descricaoMorfologica;
 
     @Valid
     @NotNull

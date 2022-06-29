@@ -17,18 +17,18 @@ import java.util.Optional;
 
 @Controller
 @ResponseBody
-@RequestMapping("api/pernas")
+@RequestMapping(value ="api/pernas")
 public class PernasController {
 
     @Autowired
     PernasService service;
 
-    @GetMapping("pernas")
+    @GetMapping("pernas/getall")
     public ResponseEntity<List<PernasDTO>> getAll(){
         return new ResponseEntity<>(service.getAllPernas(), HttpStatus.OK);
     }
 
-    @GetMapping("pernas/{id}")
+    @GetMapping("pernas/getbyid/{id}")
     public ResponseEntity<PernasDTO> getById(@PathVariable Integer id){
         Optional<PernasDTO> pernas = Optional.ofNullable(service.obterPernasPorId(id));
         if (pernas.isPresent()) {
@@ -38,7 +38,7 @@ public class PernasController {
         }
     }
 
-    @PostMapping(path = "pernas", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "pernas/create", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<PernasDTO> create(@RequestBody PernasDTO pernas){
         var res = service.salvarPernas(pernas);
         if (res == null) {
@@ -48,12 +48,12 @@ public class PernasController {
         }
     }
 
-    @DeleteMapping("pernas/{id}")
+    @DeleteMapping("pernas/delete/{id}")
     public void delete(@PathVariable(value = "id") Integer id){
         service.excluirPernas(id);
     }
 
-    @PutMapping("pernas")
+    @PutMapping("pernas/update")
     public ResponseEntity<PernasDTO> update(@Valid @RequestBody PernasDTO pernas) throws ConfigDataResourceNotFoundException {
         service.atualizarPernas(pernas);
         return ResponseEntity.ok(pernas);

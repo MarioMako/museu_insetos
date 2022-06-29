@@ -17,18 +17,18 @@ import java.util.Optional;
 
 @Controller
 @ResponseBody
-@RequestMapping("api/familia")
+@RequestMapping(value ="api/familia")
 public class FamiliaController {
 
     @Autowired
     FamiliaService service;
 
-    @GetMapping("familia")
+    @GetMapping("familia/getall")
     public ResponseEntity<List<FamiliaDTO>> getAll(){
         return new ResponseEntity<>(service.getAllFamilias(), HttpStatus.OK);
     }
 
-    @GetMapping("familia/{id}")
+    @GetMapping("familia/getbyid/{id}")
     public ResponseEntity<FamiliaDTO> getById(@PathVariable Integer id){
         Optional<FamiliaDTO> familia = Optional.ofNullable(service.obterFamiliaPorId(id));
         if (familia.isPresent()) {
@@ -38,7 +38,7 @@ public class FamiliaController {
         }
     }
 
-    @PostMapping(path = "familia", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "familia/create", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<FamiliaDTO> create(@RequestBody FamiliaDTO familia){
         var res = service.salvarFamilia(familia);
         if (res == null) {
@@ -48,14 +48,24 @@ public class FamiliaController {
         }
     }
 
-    @DeleteMapping("familia/{id}")
+    @DeleteMapping("familia/delete/{id}")
     public void delete(@PathVariable(value = "id") Integer id){
         service.excluirFamilia(id);
     }
 
-    @PutMapping("familia")
+    @PutMapping("familia/update")
     public ResponseEntity<FamiliaDTO> update(@Valid @RequestBody FamiliaDTO familia) throws ConfigDataResourceNotFoundException {
         service.atualizarFamilia(familia);
         return ResponseEntity.ok(familia);
+    }
+
+    @GetMapping("familia/filtro/{id}")
+    public ResponseEntity<List<FamiliaDTO>> getFiltro(@PathVariable Integer id){
+        List<FamiliaDTO> familia = service.getFamiliasByOrdem(id);
+        if (familia != null) {
+            return new ResponseEntity<>(familia, HttpStatus.OK);
+        } else {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,("Item necessitado não preenchido"));
+        }
     }
 }

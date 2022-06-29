@@ -22,9 +22,4 @@ public class Abdomen implements Serializable {
     @Column(name = "TIPO_ABDOMEN", nullable = false)
     private String tipoAbdomen;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ID_DESCRICAO_MORFOLOGICA", nullable = false)
-    private DescricaoMorfologica descricaoMorfologica;
-
-
 }

@@ -17,18 +17,18 @@ import java.util.Optional;
 
 @Controller
 @ResponseBody
-@RequestMapping("/api/abdomen")
+@RequestMapping(value ="/api/abdomen")
 public class AbdomenController {
 
     @Autowired
     AbdomenService service;
 
-    @GetMapping("abdomen")
+    @GetMapping("abdomen/getall")
     public ResponseEntity<List<AbdomenDTO>> getAll(){
         return new ResponseEntity<>(service.getAllAbdomens(), HttpStatus.OK);
     }
 
-    @GetMapping("abdomen/{id}")
+    @GetMapping("abdomen/getbyid/{id}")
     public ResponseEntity<AbdomenDTO> getById(@PathVariable Integer id){
         Optional<AbdomenDTO> abdomen = Optional.ofNullable(service.obterAbdomenPorId(id));
         if (abdomen.isPresent()) {
@@ -38,7 +38,7 @@ public class AbdomenController {
         }
     }
 
-    @PostMapping(path = "abdomen", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "abdomen/create", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AbdomenDTO> create(@RequestBody AbdomenDTO abdomen){
         var res = service.salvarAbdomen(abdomen);
         if (res == null) {
@@ -48,12 +48,12 @@ public class AbdomenController {
         }
     }
 
-    @DeleteMapping("abdomen/{id}")
+    @DeleteMapping("abdomen/delete/{id}")
     public void delete(@PathVariable(value = "id") Integer id){
         service.excluirAbdomen(id);
     }
 
-    @PutMapping("abdomen")
+    @PutMapping("abdomen/update")
     public ResponseEntity<AbdomenDTO> update(@Valid @RequestBody AbdomenDTO abdomen) throws ConfigDataResourceNotFoundException {
         service.atualizarAbdomen(abdomen);
         return ResponseEntity.ok(abdomen);

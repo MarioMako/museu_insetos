@@ -17,18 +17,18 @@ import java.util.Optional;
 
 @Controller
 @ResponseBody
-@RequestMapping("api/aparelho")
+@RequestMapping(value ="api/aparelho")
 public class AparelhoController {
 
     @Autowired
     AparelhoBucalService service;
 
-    @GetMapping("aparelhoBucal")
+    @GetMapping("aparelhoBucal/getall")
     public ResponseEntity<List<AparelhoBucalDTO>> getAll(){
         return new ResponseEntity<>(service.getAllAparelhos(), HttpStatus.OK);
     }
 
-    @GetMapping("aparelhoBucal/{id}")
+    @GetMapping("aparelhoBucal/getbyid/{id}")
     public ResponseEntity<AparelhoBucalDTO> getById(@PathVariable Integer id){
         Optional<AparelhoBucalDTO> aparelhoBucal = Optional.ofNullable(service.obterAparelhoPorId(id));
         if (aparelhoBucal.isPresent()) {
@@ -38,7 +38,7 @@ public class AparelhoController {
         }
     }
 
-    @PostMapping(path = "aparelhoBucal", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "aparelhoBucal/create", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AparelhoBucalDTO> create(@RequestBody AparelhoBucalDTO aparelhoBucal){
         var res = service.salvarAparelhoBucal(aparelhoBucal);
         if (res == null) {
@@ -48,12 +48,12 @@ public class AparelhoController {
         }
     }
 
-    @DeleteMapping("aparelhoBucal/{id}")
+    @DeleteMapping("aparelhoBucal/delete/{id}")
     public void delete(@PathVariable(value = "id") Integer id){
         service.excluirAparelhoBucal(id);
     }
 
-    @PutMapping("aparelhoBucal")
+    @PutMapping("aparelhoBucal/update")
     public ResponseEntity<AparelhoBucalDTO> update(@Valid @RequestBody AparelhoBucalDTO aparelhoBucal) throws ConfigDataResourceNotFoundException {
         service.atualizarAparelho(aparelhoBucal);
         return ResponseEntity.ok(aparelhoBucal);
