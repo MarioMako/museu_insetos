@@ -1,7 +1,6 @@
 package com.ufra.museu_insetos.dto.request;
 
 import com.ufra.museu_insetos.model.Curiosidade;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -1,7 +1,6 @@
 package com.ufra.museu_insetos.endpoints.biologica;
 
 import com.ufra.museu_insetos.dto.request.biologica.MetamorforseDTO;
-import com.ufra.museu_insetos.model.biologica.Metamorfose;
 import com.ufra.museu_insetos.services.biologica.MetamorfoseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
