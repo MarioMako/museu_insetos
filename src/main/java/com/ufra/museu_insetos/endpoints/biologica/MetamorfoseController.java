@@ -18,6 +18,7 @@ import java.util.Optional;
 
 @Controller
 @ResponseBody
+@CrossOrigin("*")
 @RequestMapping(value ="/api/metamorfose")
 public class MetamorfoseController {
 

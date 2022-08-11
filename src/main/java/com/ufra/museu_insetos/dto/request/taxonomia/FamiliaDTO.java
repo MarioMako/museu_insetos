@@ -30,7 +30,7 @@ public class FamiliaDTO {
 
     @Valid
     @NotNull
-    private DescricaoMorfologicaEspecieDTO descricaoMorfologica;
+    private ClassificacaoTaxonomicaEspecieDTO classificacaoTaxonomica;
 
     @Valid
     @NotNull

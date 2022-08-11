@@ -25,5 +25,4 @@ public class Pernas implements Serializable {
     @Column(name = "TIPO_PERNAS", nullable = false)
     private String tipoPernas;
 
-
 }

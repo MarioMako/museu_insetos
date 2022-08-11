@@ -17,17 +17,20 @@ import java.util.Optional;
 
 @Controller
 @ResponseBody
+@CrossOrigin("*")
 @RequestMapping(value ="api/genero")
 public class GeneroController {
 
     @Autowired
     GeneroService service;
 
+    @CrossOrigin(origins = "http://localhost:8080")
     @GetMapping("genero/getall")
     public ResponseEntity<List<GeneroDTO>> getAll(){
         return new ResponseEntity<>(service.getAllGeneros(), HttpStatus.OK);
     }
 
+    @CrossOrigin(origins = "http://localhost:8080")
     @GetMapping("genero/getbyid/{id}")
     public ResponseEntity<GeneroDTO> getById(@PathVariable Integer id){
         Optional<GeneroDTO> genero = Optional.ofNullable(service.obterGeneroPorId(id));
@@ -38,6 +41,7 @@ public class GeneroController {
         }
     }
 
+    @CrossOrigin(origins = "http://localhost:8080")
     @PostMapping(path = "genero/create", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<GeneroDTO> create(@RequestBody GeneroDTO genero){
         var res = service.salvarGenero(genero);
@@ -48,17 +52,20 @@ public class GeneroController {
         }
     }
 
+    @CrossOrigin(origins = "http://localhost:8080")
     @DeleteMapping("genero/delete/{id}")
     public void delete(@PathVariable(value = "id") Integer id){
         service.excluirGenero(id);
     }
 
+    @CrossOrigin(origins = "http://localhost:8080")
     @PutMapping("genero/update")
     public ResponseEntity<GeneroDTO> update(@Valid @RequestBody GeneroDTO genero) throws ConfigDataResourceNotFoundException {
         service.atualizarGenero(genero);
         return ResponseEntity.ok(genero);
     }
 
+    @CrossOrigin(origins = "http://localhost:8080")
     @GetMapping("genero/filtro/{id}")
     public ResponseEntity<List<GeneroDTO>> getFiltro(@PathVariable Integer id){
         List<GeneroDTO> genero = service.getGeneroByFamilia(id);

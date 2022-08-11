@@ -17,7 +17,8 @@ import java.util.Optional;
 
 @Controller
 @ResponseBody
-@RequestMapping(value ="api/aparelho")
+@CrossOrigin("*")
+@RequestMapping(value ="api/aparelhoBucal")
 public class AparelhoController {
 
     @Autowired

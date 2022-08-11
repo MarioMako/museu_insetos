@@ -17,17 +17,20 @@ import java.util.Optional;
 
 @Controller
 @ResponseBody
+@CrossOrigin("*")
 @RequestMapping(value ="api/pernas")
 public class PernasController {
 
     @Autowired
     PernasService service;
 
+    @CrossOrigin(origins = "http://localhost:8080")
     @GetMapping("pernas/getall")
     public ResponseEntity<List<PernasDTO>> getAll(){
         return new ResponseEntity<>(service.getAllPernas(), HttpStatus.OK);
     }
 
+    @CrossOrigin(origins = "http://localhost:8080")
     @GetMapping("pernas/getbyid/{id}")
     public ResponseEntity<PernasDTO> getById(@PathVariable Integer id){
         Optional<PernasDTO> pernas = Optional.ofNullable(service.obterPernasPorId(id));
@@ -38,6 +41,7 @@ public class PernasController {
         }
     }
 
+    @CrossOrigin(origins = "http://localhost:8080")
     @PostMapping(path = "pernas/create", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<PernasDTO> create(@RequestBody PernasDTO pernas){
         var res = service.salvarPernas(pernas);
@@ -48,11 +52,13 @@ public class PernasController {
         }
     }
 
+    @CrossOrigin(origins = "http://localhost:8080")
     @DeleteMapping("pernas/delete/{id}")
     public void delete(@PathVariable(value = "id") Integer id){
         service.excluirPernas(id);
     }
 
+    @CrossOrigin(origins = "http://localhost:8080")
     @PutMapping("pernas/update")
     public ResponseEntity<PernasDTO> update(@Valid @RequestBody PernasDTO pernas) throws ConfigDataResourceNotFoundException {
         service.atualizarPernas(pernas);

@@ -17,17 +17,20 @@ import java.util.Optional;
 
 @Controller
 @ResponseBody
+@CrossOrigin("*")
 @RequestMapping(value ="api/ordem")
 public class OrdemController {
 
     @Autowired
     OrdemService service;
 
+    @CrossOrigin(origins = "http://localhost:8080")
     @GetMapping("ordem/getall")
     public ResponseEntity<List<OrdemDTO>> getAll(){
         return new ResponseEntity<>(service.getAllOrdens(), HttpStatus.OK);
     }
 
+    @CrossOrigin(origins = "http://localhost:8080")
     @GetMapping("ordem/getbyid/{id}")
     public ResponseEntity<OrdemDTO> getById(@PathVariable Integer id){
         Optional<OrdemDTO> ordem = Optional.ofNullable(service.obterOrdemPorId(id));
@@ -38,6 +41,7 @@ public class OrdemController {
         }
     }
 
+    @CrossOrigin(origins = "http://localhost:8080")
     @PostMapping(path = "ordem/create", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<OrdemDTO> create(@RequestBody OrdemDTO ordem){
         var res = service.salvarOrdem(ordem);
@@ -48,11 +52,13 @@ public class OrdemController {
         }
     }
 
+    @CrossOrigin(origins = "http://localhost:8080")
     @DeleteMapping("ordem/delete/{id}")
     public void delete(@PathVariable(value = "id") Integer id){
         service.excluirOrdem(id);
     }
 
+    @CrossOrigin(origins = "http://localhost:8080")
     @PutMapping("ordem/update")
     public ResponseEntity<OrdemDTO> update(@Valid @RequestBody OrdemDTO ordem) throws ConfigDataResourceNotFoundException {
         service.atualizarOrdem(ordem);

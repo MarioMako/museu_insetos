@@ -17,6 +17,7 @@ import java.util.Optional;
 
 @Controller
 @ResponseBody
+@CrossOrigin("*")
 @RequestMapping(value ="api/antena")
 public class AntenaController {
 
